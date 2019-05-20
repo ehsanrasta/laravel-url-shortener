@@ -19,7 +19,12 @@ class LinksController extends Controller
             'original' => 'required|url',
         ]);
 
-        $link = auth()->user()->links()->create($data);
+        $link = new Link();
+        if (auth()->user()) {
+            $link = auth()->user()->links()->create($data);
+        } else {
+            $link = Link::create($data);
+        }
 
         return response()->json([
             'id' => $link->id,

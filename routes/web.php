@@ -20,9 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/links', 'LinksController@create');
-Route::post('/links', 'LinksController@store')->middleware('auth');
 
-Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'api'], function () {
     Route::post('/shorten', 'LinksController@store');
 });
 
