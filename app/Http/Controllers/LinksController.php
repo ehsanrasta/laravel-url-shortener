@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class LinksController extends Controller
 {
+    public function index()
+    {
+
+    }
 
     public function create()
     {
@@ -40,12 +44,10 @@ class LinksController extends Controller
     public function show(Request $request)
     {
         $data = $request->validate(
-            array_merge(
-                $request->all(),
-                ['short' => $request->short]
-            ), [
-            'short' => 'required',
-        ]);
+            array_merge($request->all(),
+                ['short' => $request->short]),
+            ['short' => 'required']
+        );
 
         $link = Link::find(app()->encoder->decode($request->short))
             ->first();
