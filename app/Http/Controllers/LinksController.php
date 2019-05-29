@@ -3,13 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Link;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
 {
     public function index()
     {
+        $links = $this->getLinksForUserOrGuest();
 
+        if (request()->wantsJson()) {
+            return $links->toJson();
+        }
+    }
+
+    private function getLinksForUserOrGuest()
+    {
+        if (auth()->guest()) {
+            return collect();
+        }
+
+        return auth()->user()->links()->get();
     }
 
     public function create()
@@ -36,9 +50,9 @@ class LinksController extends Controller
     {
         if (auth()->guest()) {
             return Link::create($data);
-        } else {
-            return auth()->user()->links()->create($data);
         }
+
+        return auth()->user()->links()->create($data);
     }
 
     public function show(Request $request)

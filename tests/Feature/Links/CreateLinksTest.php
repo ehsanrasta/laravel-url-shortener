@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Link;
+use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateLinksTest extends TestCase

@@ -2,21 +2,26 @@
 
 namespace Tests\Feature;
 
+use App\Link;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReadLinksTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    public function test_it_returns_correct_json()
     {
-        $response = $this->get('/');
+        $this->actingAs(factory(User::class)->create());
+
+        auth()->user()->links()->create(factory(Link::class, 10)->raw());
+
+        $response = $this->json('GET', '/api/' . auth()->id() . '/links');
 
         $response->assertStatus(200);
+
+        dd($response->content());
     }
 }
