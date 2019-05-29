@@ -56,15 +56,6 @@ class LinksEndpointTest extends TestCase
             ->assertRedirect($link->original);
     }
 
-    public function test_it_returns_correct_json_when_not_logged_in()
-    {
-        $response = $this->json('POST', '/api/shorten', factory(Link::class)->raw());
-
-        $response->assertJson([
-            'message' => 'Unauthenticated.'
-        ]);
-    }
-
     public function test_it_validates_input_for_creation()
     {
         $this->actingAs(factory(User::class)->create());
@@ -88,12 +79,5 @@ class LinksEndpointTest extends TestCase
     {
         $this->get('/links')
             ->assertStatus(200);
-    }
-
-    public function test_a_link_requires_an_owner()
-    {
-        $link = factory(Link::class)->raw();
-        $this->post('/api/shorten', $link)
-            ->assertRedirect('login');
     }
 }

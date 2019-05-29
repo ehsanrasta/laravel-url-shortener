@@ -4,7 +4,11 @@ const getClient = (baseUrl = null) => {
 
   const options = {
     baseURL: baseUrl,
-    headers: {'X-Requested-With': 'XMLHttpRequest'}
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
   }
 
   const client = axios.create(options)

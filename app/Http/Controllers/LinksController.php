@@ -19,7 +19,7 @@ class LinksController extends Controller
             'original' => 'required|url',
         ]);
 
-        $link = $this->createLinkForCurrentUser($data);
+        $link = $this->createLinkForUserOrGuest($data);
 
         return response()->json([
             'id' => $link->id,
@@ -28,7 +28,7 @@ class LinksController extends Controller
         ]);
     }
 
-    private function createLinkForCurrentUser($data): Link
+    private function createLinkForUserOrGuest($data): Link
     {
         if (auth()->guest()) {
             return Link::create($data);
