@@ -1,17 +1,18 @@
 <template>
     <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center mb-1"
+        <li class="list-group-item d-flex flex-wrap align-items-center mb-1"
             v-for="(link, index) in previousLinks">
-            {{ link.original | truncate(40) }}
 
-            <div>
-                <a :href="'http://short.test/' + link.short" target="_blank">http://short.test/{{ link.short }}</a>
-                <button @click="copy(link.short, index)" class="btn ml-3" type="button"
-                        v-bind:class="{ 'btn-secondary': copiedIndex !== index, 'btn-success': copiedIndex === index }">
-                    <span v-if="copiedIndex !== index">Copy</span>
-                    <span v-if="copiedIndex === index">Copied!</span>
-                </button>
-            </div>
+            <span class="mr-auto">{{ link.original | truncate(40) }}</span>
+
+            <a :href="'http://short.test/' + link.short" class="mr-1" target="_blank">http://short.test/{{
+                link.short }}</a>
+
+            <button @click="copy(link.short, index)" class="btn col-sm-12 col-md-1" type="button"
+                    v-bind:class="{ 'btn-secondary': copiedIndex !== index, 'btn-success': copiedIndex === index }">
+                <span v-if="copiedIndex !== index">Copy</span>
+                <span v-if="copiedIndex === index">Copied!</span>
+            </button>
         </li>
     </ul>
 </template>

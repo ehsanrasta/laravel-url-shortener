@@ -19,18 +19,22 @@ class LinksController extends Controller
             'original' => 'required|url',
         ]);
 
-        $link = new Link();
-        if (auth()->user()) {
-            $link = auth()->user()->links()->create($data);
-        } else {
-            $link = Link::create($data);
-        }
+        $link = $this->createLinkForCurrentUser($data);
 
         return response()->json([
             'id' => $link->id,
             'original' => $link->original,
             'short' => $link->short(),
         ]);
+    }
+
+    private function createLinkForCurrentUser($data): Link
+    {
+        if (auth()->guest()) {
+            return Link::create($data);
+        } else {
+            return auth()->user()->links()->create($data);
+        }
     }
 
     public function show(Request $request)

@@ -7,11 +7,16 @@
 require('./bootstrap')
 
 window.Vue = require('vue')
+
 import VueSweetalert2 from 'vue-sweetalert2'
+import VueApexCharts from 'vue-apexcharts'
+import BootstrapVue from 'bootstrap-vue'
 
 import store from './store/index'
 
 window.Vue.use(VueSweetalert2)
+window.Vue.use(VueApexCharts)
+window.Vue.use(BootstrapVue)
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +32,10 @@ window.Vue.use(VueSweetalert2)
 Vue.component('shorten-link-form-component', require('./components/ShortenLinkFormComponent.vue').default)
 
 Vue.component('previous-links-component', require('./components/PreviousLinksComponent.vue').default)
+
+Vue.component('apexchart', VueApexCharts)
+
+Vue.component('link-chart-component', require('./components/LinkChartComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
