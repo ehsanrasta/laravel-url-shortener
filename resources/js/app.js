@@ -31,11 +31,15 @@ window.Vue.use(BootstrapVue)
 
 Vue.component('shorten-link-form-component', require('./components/ShortenLinkFormComponent.vue').default)
 
-Vue.component('previous-links-component', require('./components/PreviousLinksComponent.vue').default)
+Vue.component('previous-links-component', require('./components/PreviousLinksListComponent.vue').default)
 
 Vue.component('apexchart', VueApexCharts)
 
 Vue.component('link-chart-component', require('./components/LinkChartComponent.vue').default)
+
+Vue.component('all-links-component', require('./components/LinksListComponent.vue').default)
+
+Vue.component('selected-link-information-component', require('./components/SelectedLinkInformationComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

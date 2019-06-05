@@ -16,12 +16,22 @@ class ReadLinksTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        auth()->user()->links()->create(factory(Link::class, 10)->raw());
+        for ($i = 0; $i < 10; $i++) {
+            auth()->user()->links()->create(factory(Link::class)->raw());
+        }
 
-        $response = $this->json('GET', '/api/' . auth()->id() . '/links');
+        $response = $this->json('GET', '/api/links');
 
         $response->assertStatus(200);
 
-        dd($response->content());
+        $this->assertEquals(10, sizeof($response->decodeResponseJson()));
+
+        auth()->logout();
+
+        $response = $this->json('GET', '/api/links');
+
+        $response->assertStatus(200);
+
+        $this->assertEquals(0, sizeof($response->decodeResponseJson()));
     }
 }

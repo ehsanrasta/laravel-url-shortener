@@ -12,19 +12,19 @@
 */
 
 Route::get('/', function () {
-    return redirect('/links');
+    return redirect('/links/create');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/links', 'LinksController@create');
+Route::get('/links/create', 'LinksController@create');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('/shorten', 'LinksController@store');
 
-    Route::get('/{user}/links', 'LinksController@index');
+    Route::get('/links', 'LinksController@index');
 });
 
 Route::get('/{short}', 'LinksController@show');

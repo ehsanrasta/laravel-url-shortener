@@ -11,7 +11,23 @@ class CreateLinksTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_it_creates_links()
+    public function test_it_creates_links_for_guests()
+    {
+        $response = $this->json('POST', '/api/shorten', [
+            'original' => 'https://facebook.com'
+        ]);
+
+        $response->assertStatus(200);
+
+        $response = $response->decodeResponseJson();
+
+        $this->assertDatabaseHas('links', [
+            'id' => $response['id'],
+            'original' => $response['original'],
+        ]);
+    }
+
+    public function test_it_creates_links_for_logged_in_user()
     {
         $this->actingAs(factory(User::class)->create());
 
@@ -65,7 +81,7 @@ class CreateLinksTest extends TestCase
 
     public function test_can_view_the_link_creation_page()
     {
-        $this->get('/links')
+        $this->get('/links/create')
             ->assertStatus(200);
     }
 }

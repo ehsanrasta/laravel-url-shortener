@@ -3,10 +3,9 @@
 namespace App\Providers;
 
 use Hashids\Hashids;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class EncoderServiceProvider extends ServiceProvider implements DeferrableProvider
+class EncoderServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -15,7 +14,7 @@ class EncoderServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register()
     {
-        $this->app->singleton('encoder', function($app) {
+        $this->app->singleton('encoder', function ($app) {
             return new Hashids(env('HASHIDS_SALT'), env('HASHIDS_MIN_LENGTH'));
         });
     }
@@ -28,10 +27,5 @@ class EncoderServiceProvider extends ServiceProvider implements DeferrableProvid
     public function boot()
     {
         //
-    }
-
-    public function provides()
-    {
-        return [Hashids::class];
     }
 }

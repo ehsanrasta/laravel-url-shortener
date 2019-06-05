@@ -1,6 +1,6 @@
 <template>
     <div id="linkChartContainer">
-        <apexchart :options="chartOptions" :series="series" height="100%" type="bar" width="100%"></apexchart>
+        <apexchart :options="chartOptions" :series="series" height="100%" width="100%"></apexchart>
     </div>
 </template>
 
@@ -12,11 +12,16 @@
       return {
         chartOptions: {
           chart: {
-            id: 'vuechart'
+            type: 'area',
+            background: '#fff',
           },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-          }
+          dataLabels: {enabled: false},
+          stroke: {curve: 'smooth'},
+          xaxis:
+            {
+              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            }
+          ,
         },
         series: [{
           name: 'Clicks',
@@ -29,8 +34,11 @@
 
 <style scoped>
     #linkChartContainer {
+        display: inline-block;
         position: relative;
         width: 100%;
         height: 300px;
+        vertical-align: middle;
+        overflow: hidden;
     }
 </style>

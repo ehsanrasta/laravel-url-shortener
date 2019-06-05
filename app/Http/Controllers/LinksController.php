@@ -15,6 +15,11 @@ class LinksController extends Controller
         if (request()->wantsJson()) {
             return $links->toJson();
         }
+
+        /**
+         * TODO: Do something when the request does not want JSON.
+         *       Redirect or show a view? Extract JSON logic to an API controller?
+         */
     }
 
     private function getLinksForUserOrGuest()
