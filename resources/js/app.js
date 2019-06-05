@@ -8,6 +8,8 @@ require('./bootstrap')
 
 window.Vue = require('vue')
 
+window.moment = require('moment')
+
 import VueSweetalert2 from 'vue-sweetalert2'
 import VueApexCharts from 'vue-apexcharts'
 import BootstrapVue from 'bootstrap-vue'
@@ -49,6 +51,10 @@ Vue.component('selected-link-information-component', require('./components/Selec
 
 Vue.filter('truncate', function (text, stop, clamp) {
   return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
+})
+
+Vue.filter('momentDay', function (text) {
+  return moment(text).format('MMM D')
 })
 
 const app = new Vue({
