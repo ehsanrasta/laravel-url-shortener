@@ -38,10 +38,3 @@ class ApiClient {
 
 export { ApiClient }
 
-export default {
-  post (url, data = {}, conf = {}) {
-    return getClient().post(url, data, conf)
-      .then(response => Promise.resolve(response))
-      .catch(error => Promise.reject(error))
-  }
-}
