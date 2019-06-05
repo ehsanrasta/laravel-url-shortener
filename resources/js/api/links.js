@@ -6,6 +6,10 @@ export default {
 
   shorten (link) {
     return client.post('shorten', link)
+  },
+
+  getAllLinksForUser () {
+    return client.get('links')
   }
 
 }
