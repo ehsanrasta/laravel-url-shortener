@@ -47,7 +47,7 @@ class LinksController extends Controller
         return response()->json([
             'id' => $link->id,
             'original' => $link->original,
-            'short' => $link->short(),
+            'short' => $link->short,
         ]);
     }
 

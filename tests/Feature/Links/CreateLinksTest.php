@@ -56,7 +56,7 @@ class CreateLinksTest extends TestCase
         $response->assertJson([
             'id' => $link->id,
             'original' => $link->original,
-            'short' => $link->short(),
+            'short' => $link->short,
         ]);
     }
 

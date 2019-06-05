@@ -20,7 +20,7 @@ class RedirectLinksTest extends TestCase
 
         $link = Link::find($response->decodeResponseJson()['id']);
 
-        $this->get('/' . $link->short())
+        $this->get('/' . $link->short)
             ->assertRedirect($link->original);
     }
 }
