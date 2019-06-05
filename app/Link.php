@@ -23,11 +23,6 @@ class Link extends Model
 
     public function getShortAttribute()
     {
-        return $this->short();
-    }
-
-    public function short()
-    {
         return app()->encoder->encode($this->id);
     }
 
