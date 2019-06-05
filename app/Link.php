@@ -16,6 +16,10 @@ class Link extends Model
         'id',
     ];
 
+    protected $appends = [
+        'short'
+    ];
+
     public function getShortAttribute()
     {
         return $this->short();
