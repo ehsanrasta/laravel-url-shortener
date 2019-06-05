@@ -16,7 +16,24 @@ class ReadLinksTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 3; $i++) {
+            auth()->user()->links()->create(factory(Link::class)->raw());
+        }
+
+        $response = $this->json('GET', '/api/links');
+
+        $response->assertStatus(200)
+            ->assertJson(auth()->user()->links()->get()->toArray())
+            ->assertJsonStructure([
+                '*' => ['created_at', 'original', 'short']
+            ]);
+    }
+
+    public function test_it_returns_all_links()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        for ($i = 0; $i < 3; $i++) {
             auth()->user()->links()->create(factory(Link::class)->raw());
         }
 
@@ -24,7 +41,7 @@ class ReadLinksTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertEquals(10, sizeof($response->decodeResponseJson()));
+        $this->assertEquals(3, sizeof($response->decodeResponseJson()));
 
         auth()->logout();
 
