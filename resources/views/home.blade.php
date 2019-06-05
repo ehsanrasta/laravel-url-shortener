@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row mb-1">
+    <div class="row mb-5">
         <div class="col-sm-12">
-            <div class="jumbotron">
-                <link-chart-component></link-chart-component>
+            <div class="card">
+                <div class="card-body">
+                    <link-chart-component></link-chart-component>
+                </div>
             </div>
         </div>
     </div>
