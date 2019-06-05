@@ -34,6 +34,12 @@ class ApiClient {
       .then(response => Promise.resolve(response))
       .catch(error => Promise.reject(error))
   }
+
+  get (url, conf = {}) {
+    return this.client.get(url, conf)
+      .then(response => Promise.resolve(response))
+      .catch(error => Promise.reject(error))
+  }
 }
 
 export { ApiClient }
