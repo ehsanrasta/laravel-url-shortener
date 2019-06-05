@@ -1,15 +1,15 @@
 <template>
     <div>
         <div class="d-flex justify-content-between">
-            <p class="form-text text-muted py-0 my-0">{{ links.length }} links</p>
+            <p class="form-text text-muted py-0 my-0">{{ allLinks.length }} links</p>
             <p class="form-text text-muted py-0 my-0">Clicks all time</p>
         </div>
 
         <ul class="list-group overflow-auto" style="max-height: 300px">
-            <li class="d-flex align-items-start flex-column list-group-item" href="#some-link" v-for="link in links">
-                <small class="d-flex w-100 text-uppercase">May 29</small>
+            <li class="d-flex align-items-start flex-column list-group-item" href="#some-link" v-for="link in allLinks">
+                <small class="d-flex w-100 text-uppercase">{{ link.created_at }}</small>
                 <div class="d-flex w-100 justify-content-between">
-                    <h5>twitter.com</h5>
+                    <h5>{{ link.original | truncate(30) }}</h5>
                     <span>5 <i class="far fa-chart-bar"></i></span>
                 </div>
                 <a href="">
@@ -25,10 +25,18 @@
     name: 'LinksListComponent',
 
     data () {
-      return {
-        links: [{}, {}, {}]
+      return {}
+    },
+
+    computed: {
+      allLinks () {
+        return this.$store.state.allLinks
       }
     },
+
+    mounted () {
+      this.$store.dispatch('getAllLinksForUser')
+    }
   }
 </script>
 
