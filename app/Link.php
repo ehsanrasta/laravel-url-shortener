@@ -16,13 +16,18 @@ class Link extends Model
         'id',
     ];
 
-    public function user()
+    public function getShortAttribute()
     {
-        return $this->belongsTo(User::class);
+        return $this->short();
     }
 
     public function short()
     {
         return app()->encoder->encode($this->id);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
