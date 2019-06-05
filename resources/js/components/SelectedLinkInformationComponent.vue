@@ -1,24 +1,26 @@
 <template>
-    <div class="bg-white px-3">
-        <small class="text-muted text-uppercase">
-            Created May 29th 2018 |
-        </small>
+    <div class="card">
+        <div class="card-body">
+            <small class="text-muted text-uppercase">
+                Created May 29th 2018 |
+            </small>
 
-        <small>
-            <a href="">etienneac</a>
-        </small>
+            <small>
+                <a href="">etienneac</a>
+            </small>
 
-        <h4 class="mt-3 mb-3">twitter.com</h4>
+            <h4 class="mt-3 mb-3">twitter.com</h4>
 
-        <p class="mr-2" style="display: inline"><a href="">short.test/<b>jW8Kl2</b></a></p>
-        <b-button variant="outline-primary btn-sm">Copy</b-button>
-        <b-button variant="outline-primary btn-sm">Edit</b-button>
+            <p class="mr-2" style="display: inline"><a href="">short.test/<b>jW8Kl2</b></a></p>
+            <b-button variant="outline-primary btn-sm">Copy</b-button>
+            <b-button variant="outline-primary btn-sm">Edit</b-button>
 
-        <hr>
+            <hr>
 
-        <div class="d-flex flex-column align-items-start">
-            <h4 style="display: inline">5 <i class="far fa-chart-bar"></i></h4>
-            <small class="d-flex text-muted text-uppercase mb-1">Total clicks</small>
+            <div class="d-flex flex-column align-items-start">
+                <h4 style="display: inline">5 <i class="far fa-chart-bar"></i></h4>
+                <small class="d-flex text-muted text-uppercase mb-1">Total clicks</small>
+            </div>
         </div>
     </div>
 </template>
