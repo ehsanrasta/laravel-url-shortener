@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white">
+    <div class="bg-white px-3">
         <small class="text-muted text-uppercase">
             Created May 29th 2018 |
         </small>
