@@ -4,6 +4,12 @@ let mutations = {
 
     addToPreviousLinks(state, link)
   },
+
+  ADD_LINKS (state, links) {
+    links.forEach(function (element) {
+      state.allLinks.push(element)
+    })
+  }
 }
 
 function addToPreviousLinks (state, link) {
