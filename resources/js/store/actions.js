@@ -12,6 +12,13 @@ let actions = {
 
         commit('CREATE_LINK', {id, original, short})
       })
+  },
+
+  async getAllLinksForUser ({commit}) {
+    await linksClient.getAllLinksForUser()
+      .then((response) => {
+        commit('ADD_LINKS', response.data)
+      })
   }
 }
 
