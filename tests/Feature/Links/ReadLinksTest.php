@@ -16,9 +16,9 @@ class ReadLinksTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        for ($i = 0; $i < 3; $i++) {
-            auth()->user()->links()->create(factory(Link::class)->raw());
-        }
+        factory(Link::class, 5)->create([
+            'user_id' => auth()->id()
+        ]);
 
         $response = $this->json('GET', '/api/links');
 
@@ -33,9 +33,9 @@ class ReadLinksTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        for ($i = 0; $i < 3; $i++) {
-            auth()->user()->links()->create(factory(Link::class)->raw());
-        }
+        factory(Link::class, 3)->create([
+            'user_id' => auth()->id()
+        ]);
 
         $response = $this->json('GET', '/api/links');
 
