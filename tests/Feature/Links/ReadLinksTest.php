@@ -33,7 +33,7 @@ class ReadLinksTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        factory(Link::class, 3)->create([
+        factory(Link::class, 5)->create([
             'user_id' => auth()->id()
         ]);
 
@@ -41,7 +41,7 @@ class ReadLinksTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertEquals(3, sizeof($response->decodeResponseJson()));
+        $this->assertEquals(5, sizeof($response->decodeResponseJson()));
 
         auth()->logout();
 
