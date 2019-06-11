@@ -60,7 +60,7 @@ class ReadLinksTest extends TestCase
 
         $this->get('/' . $link->short);
 
-        $link = Link::find($link->id);
+        $link = $link->fresh();
 
         $this->assertEquals(1, $link->clicks);
     }
