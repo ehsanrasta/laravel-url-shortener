@@ -14,7 +14,7 @@ class AddClicksColumnToLinksTable extends Migration
     public function up()
     {
         Schema::table('links', function (Blueprint $table) {
-            $table->integer('clicks')->unsigned();
+            $table->integer('clicks')->unsigned()->default(0);
         });
     }
 
