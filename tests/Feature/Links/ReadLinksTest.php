@@ -23,9 +23,9 @@ class ReadLinksTest extends TestCase
         $response = $this->json('GET', '/api/links');
 
         $response->assertStatus(200)
-            ->assertJson(auth()->user()->links()->get()->toArray())
+            ->assertExactJson(auth()->user()->links()->get()->toArray())
             ->assertJsonStructure([
-                '*' => ['created_at', 'original', 'short']
+                '*' => ['created_at', 'original', 'short', 'clicks']
             ]);
     }
 
