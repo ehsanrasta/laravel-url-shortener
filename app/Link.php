@@ -21,6 +21,11 @@ class Link extends Model
         'short'
     ];
 
+    public function incrementClicks()
+    {
+        $this->increment('clicks');
+    }
+
     public function getShortAttribute()
     {
         return app()->encoder->encode($this->id);

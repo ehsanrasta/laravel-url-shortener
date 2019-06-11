@@ -10,5 +10,6 @@ $factory->define(Link::class, function (Faker $faker) {
     return [
         'user_id' => factory(User::class),
         'original' => $faker->url,
+        'clicks' => 0,
     ];
 });
