@@ -21,21 +21,31 @@
 </template>
 
 <script>
+  import linksClient from './../api/links'
+
   export default {
     name: 'LinksListComponent',
 
     data () {
-      return {}
-    },
-
-    computed: {
-      allLinks () {
-        return this.$store.state.allLinks
+      return {
+        allLinks: [],
       }
     },
 
-    mounted () {
-      this.$store.dispatch('getAllLinksForUser')
+    async mounted () {
+      let vm = this
+
+      await linksClient.getAllLinksForUser().then((response) => {
+        response.data.forEach(function (element) {
+          vm.allLinks.push(element)
+        })
+      }).catch((error) => {
+        this.$swal({
+          type: 'error',
+          title: 'Oops...',
+          text: 'There was an error loading your past links.',
+        })
+      })
     }
   }
 </script>

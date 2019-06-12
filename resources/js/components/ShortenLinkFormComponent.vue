@@ -56,7 +56,6 @@
             title: 'Oops...',
             text: 'Please check your link and try again.',
           })
-          console.log(error)
         })
       },
 
