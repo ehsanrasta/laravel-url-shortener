@@ -1,10 +1,4 @@
 let state = {
-  link: {
-    id: '',
-    original: '',
-    short: '',
-  },
-
   previousLinks: [],
 
   allLinks: [],

@@ -10,7 +10,7 @@
                 <small class="d-flex w-100 text-uppercase">{{ link.created_at | momentDay }}</small>
                 <div class="d-flex w-100 justify-content-between">
                     <h5>{{ link.original | truncate(30) }}</h5>
-                    <span>{{ link.total_clicks }} <i class="far fa-chart-bar"></i></span>
+                    <span>{{ link.clicks }} <i class="far fa-chart-bar"></i></span>
                 </div>
                 <a :href="'http://short.test/' + link.short">
                     <small>short.test/<b>{{ link.short }}</b></small>
