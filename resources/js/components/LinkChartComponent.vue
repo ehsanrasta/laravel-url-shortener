@@ -1,42 +1,41 @@
-<template>
-    <div id="linkChartContainer">
-    </div>
-</template>
-
 <script>
+  import { Line } from 'vue-chartjs'
+
   export default {
     name: 'LinkChartComponent',
-    data: function () {
-      return {
-        chartOptions: {
-          chart: {
-            type: 'area',
-            background: '#fff',
-          },
-          dataLabels: {enabled: false},
-          stroke: {curve: 'smooth'},
-          xaxis:
-            {
-              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            }
-          ,
-        },
-        series: [{
-          name: 'Clicks',
-          data: [2, 10, 13, 5, 18, 53, 25, 30, 37, 42, 61, 72]
-        }]
+
+    extends: Line,
+
+    mounted () {
+      let data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets:
+          [{
+            data: [10, 20, 15, 5, 30, 60, 70, 20, 30, 10, 50, 70],
+            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+            borderColor: 'rgba(0, 123, 255, 1)',
+          }]
       }
-    },
+
+      let options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+
+        legend: {
+          display: false
+        },
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+      }
+
+      this.renderChart(data, options)
+    }
   }
 </script>
-
-<style scoped>
-    #linkChartContainer {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-        height: 300px;
-        vertical-align: middle;
-        overflow: hidden;
-    }
-</style>
