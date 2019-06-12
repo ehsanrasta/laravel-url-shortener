@@ -11,12 +11,8 @@ window.Vue = require('vue')
 window.moment = require('moment')
 
 import VueSweetalert2 from 'vue-sweetalert2'
-import VueApexCharts from 'vue-apexcharts'
-import BootstrapVue from 'bootstrap-vue'
 
 window.Vue.use(VueSweetalert2)
-window.Vue.use(VueApexCharts)
-window.Vue.use(BootstrapVue)
 
 /**
  * The following block of code may be used to automatically register your
