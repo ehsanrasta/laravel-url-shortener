@@ -27,11 +27,7 @@
       }
     },
 
-    computed: {
-      previousLinks () {
-        return this.$store.state.previousLinks
-      }
-    },
+    props: ['previousLinks'],
 
     methods: {
       copy (shortLink, index) {

@@ -18,7 +18,8 @@
             </div>
         </transition>
 
-        <previous-links-component previous-links="previousLinks"></previous-links-component>
+        <previous-links-component :previous-links="previousLinks"
+                                  v-if="previousLinks.length > 0"></previous-links-component>
     </div>
 </template>
 
