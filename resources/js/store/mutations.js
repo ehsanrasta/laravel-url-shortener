@@ -1,5 +1,7 @@
 let mutations = {
   CREATE_LINK (state, link) {
+    Object.assign(state.link, link)
+
     addToPreviousLinks(state, link)
   },
 

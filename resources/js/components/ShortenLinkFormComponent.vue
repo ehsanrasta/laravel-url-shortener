@@ -29,6 +29,12 @@
       }
     },
 
+    computed: {
+      link () {
+        return this.$store.state.link
+      }
+    },
+
     methods:
       {
         shorten () {
