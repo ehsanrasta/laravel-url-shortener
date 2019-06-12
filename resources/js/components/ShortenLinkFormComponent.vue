@@ -17,6 +17,8 @@
                 links</b> and more!
             </div>
         </transition>
+
+        <previous-links-component previous-links="previousLinks"></previous-links-component>
     </div>
 </template>
 
