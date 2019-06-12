@@ -4,7 +4,7 @@
             <form @submit.prevent="">
                 <div class="input-group mt-3 justify-content-between">
                     <input class="form-control col-8" id="linkInput" name="original" placeholder="Shorten your link"
-                           type="text" v-model="linkText">
+                           type="text" v-model="original">
                     <button @click="shorten()" class="btn btn-primary col-3" type="submit">Shorten!
                     </button>
                 </div>
@@ -12,7 +12,7 @@
         </div>
 
         <transition name="slide-fade">
-            <div class="alert alert-info mb-3" role="alert" v-if="numberOfShortenedLinks > 1">
+            <div class="alert alert-info mb-3" role="alert" v-if="previousLinks.length > 1">
                 Like our service? <a href="/register"><b>Sign up now</b></a> and get access to <b>analytics</b>, <b>custom
                 links</b> and more!
             </div>
@@ -21,44 +21,55 @@
 </template>
 
 <script>
+  import linksClient from './../api/links'
+
   export default {
     data () {
       return {
-        numberOfShortenedLinks: 0,
-        linkText: '',
+        previousLinks: [],
+        original: '',
       }
     },
 
-    computed: {
-      link () {
-        return this.$store.state.link
-      }
-    },
+    methods: {
+      async shorten () {
+        let link = {
+          original: this.original
+        }
 
-    methods:
-      {
-        shorten () {
-          var link = {
-            original: this.linkText
-          }
+        if (!link.original.startsWith('http://') && !link.original.startsWith('https://')) {
+          link.original = 'http://' + link.original
+        }
 
-          if (!link.original.startsWith('http://') && !link.original.startsWith('https://')) {
-            link.original = 'http://' + link.original
-          }
+        await linksClient.shorten(link).then((response) => {
+          this.original = ''
+          this.numberOfShortenedLinks++
 
-          this.$store.dispatch('shorten', link).then(() => {
-            this.linkText = ''
-            this.numberOfShortenedLinks++
-          }).catch((error) => {
-            this.$swal({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Please check your link and try again.',
-            })
+          let {
+            id,
+            original,
+            short
+          } = response.data
+
+          this.addToPreviousLinks({id, original, short})
+        }).catch((error) => {
+          this.$swal({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Please check your link and try again.',
           })
-        },
+          console.log(error)
+        })
+      },
+
+      addToPreviousLinks (link) {
+        if (this.previousLinks.length >= 3) {
+          let removed = this.previousLinks.splice(-1)
+        }
+
+        this.previousLinks.unshift(link)
       }
-    ,
+    },
   }
 </script>
 
