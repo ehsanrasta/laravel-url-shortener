@@ -12,8 +12,8 @@
         datasets:
           [{
             data: [10, 20, 15, 5, 30, 60, 70, 20, 30, 10, 50, 70],
-            backgroundColor: 'rgba(0, 123, 255, 0.2)',
-            borderColor: 'rgba(0, 123, 255, 1)',
+            backgroundColor: 'rgba(52, 144, 220, 0.2)',
+            borderColor: 'rgba(52, 144, 220, 1)',
           }]
       }
 
