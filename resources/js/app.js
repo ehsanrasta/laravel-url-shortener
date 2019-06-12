@@ -29,8 +29,6 @@ Vue.component('shorten-link-form-component', require('./components/ShortenLinkFo
 
 Vue.component('previous-links-component', require('./components/PreviousLinksListComponent.vue').default)
 
-Vue.component('apexchart', VueApexCharts)
-
 Vue.component('link-chart-component', require('./components/LinkChartComponent.vue').default)
 
 Vue.component('all-links-component', require('./components/LinksListComponent.vue').default)

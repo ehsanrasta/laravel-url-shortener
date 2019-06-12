@@ -12,8 +12,8 @@
             <h4 class="mt-3 mb-3">twitter.com</h4>
 
             <p class="mr-2" style="display: inline"><a href="">short.test/<b>jW8Kl2</b></a></p>
-            <b-button variant="outline-primary btn-sm">Copy</b-button>
-            <b-button variant="outline-primary btn-sm">Edit</b-button>
+            <div class="btn btn-outline-primary btn-sm">Copy</div>
+            <div class="btn btn-outline-primary btn-sm">Edit</div>
 
             <hr>
 

@@ -1,6 +1,5 @@
 <template>
     <div id="linkChartContainer">
-        <apexchart :options="chartOptions" :series="series" height="100%" width="100%"></apexchart>
     </div>
 </template>
 
