@@ -39,7 +39,6 @@
 
         await linksClient.shorten(link).then((response) => {
           this.original = ''
-          this.numberOfShortenedLinks++
 
           let {
             id,
