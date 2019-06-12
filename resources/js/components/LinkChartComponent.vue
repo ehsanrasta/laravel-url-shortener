@@ -6,7 +6,6 @@
 <script>
   export default {
     name: 'LinkChartComponent',
-
     data: function () {
       return {
         chartOptions: {
