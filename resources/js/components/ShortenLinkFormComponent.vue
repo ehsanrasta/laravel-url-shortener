@@ -37,10 +37,6 @@
           original: this.original
         }
 
-        if (!link.original.startsWith('http://') && !link.original.startsWith('https://')) {
-          link.original = 'http://' + link.original
-        }
-
         await linksClient.shorten(link).then((response) => {
           this.original = ''
           this.numberOfShortenedLinks++
