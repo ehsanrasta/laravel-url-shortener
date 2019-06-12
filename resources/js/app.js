@@ -14,8 +14,6 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueApexCharts from 'vue-apexcharts'
 import BootstrapVue from 'bootstrap-vue'
 
-import store from './store/index'
-
 window.Vue.use(VueSweetalert2)
 window.Vue.use(VueApexCharts)
 window.Vue.use(BootstrapVue)
@@ -59,5 +57,4 @@ Vue.filter('momentDay', function (text) {
 
 const app = new Vue({
   el: '#app',
-  store
 })
