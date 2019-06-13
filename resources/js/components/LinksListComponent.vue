@@ -6,7 +6,10 @@
         </div>
 
         <ul class="list-group overflow-auto" style="max-height: 300px">
-            <li class="d-flex align-items-start flex-column list-group-item" href="#some-link" v-for="link in allLinks">
+            <li :class="{ 'active' : isSelected(index) }"
+                @click="setSelected(link, index)"
+                class="d-flex align-items-start flex-column list-group-item list-group-item-action" href="#some-link"
+                style="cursor: pointer;" v-for="(link, index) in allLinks">
                 <small class="d-flex w-100 text-uppercase">{{ link.created_at | momentDay }}</small>
                 <div class="d-flex w-100 justify-content-between">
                     <h5>{{ link.original | truncate(30) }}</h5>
@@ -29,6 +32,19 @@
     data () {
       return {
         allLinks: [],
+        selectedIndex: -1,
+        selectedLink: {},
+      }
+    },
+
+    methods: {
+      setSelected (link, index) {
+        this.selectedLink = link
+        this.selectedIndex = index
+      },
+
+      isSelected (index) {
+        return index === this.selectedIndex
       }
     },
 
