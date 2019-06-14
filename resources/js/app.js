@@ -31,8 +31,6 @@ Vue.component('shorten-link-form-component', require('./components/ShortenLinkFo
 
 Vue.component('previous-links-component', require('./components/PreviousLinksListComponent.vue').default)
 
-Vue.component('all-links-component', require('./components/LinksListComponent.vue').default)
-
 Vue.component('selected-link-information-component', require('./components/SelectedLinkInformationComponent.vue').default)
 
 /**

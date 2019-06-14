@@ -27,7 +27,7 @@
   import linksClient from './../api/links'
 
   export default {
-    name: 'LinksListComponent',
+    name: 'LinkListComponent',
 
     data () {
       return {

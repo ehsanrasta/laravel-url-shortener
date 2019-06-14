@@ -12,7 +12,7 @@
 
         <div class="row justify-content-between">
             <div class="col-sm-12 col-md-4">
-                <all-links-component></all-links-component>
+                <link-list-component></link-list-component>
             </div>
 
             <div class="col-sm-12 col-md-7">
@@ -24,11 +24,12 @@
 
 <script>
   import LinkChartComponent from './LinkChartComponent.vue'
+  import LinkListComponent from './LinkListComponent.vue'
 
   export default {
     name: 'DashboardComponent',
 
-    components: {LinkChartComponent}
+    components: {LinkListComponent, LinkChartComponent}
   }
 </script>
 
