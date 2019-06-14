@@ -45,6 +45,10 @@ Vue.filter('momentDay', function (text) {
   return moment(text).format('MMM D')
 })
 
+Vue.filter('momentDayYear', function (text) {
+  return moment(text).format('MMMM Do YYYY')
+})
+
 const app = new Vue({
   el: '#app',
 })

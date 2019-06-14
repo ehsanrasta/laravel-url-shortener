@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <small class="text-muted text-uppercase">
-                Created May 29th 2018 |
+                Created {{ link.created_at | momentDayYear }} |
             </small>
 
             <small>
@@ -11,7 +11,9 @@
 
             <h4 class="mt-3 mb-3">{{ link.original }}</h4>
 
-            <p class="mr-2" style="display: inline"><a href="">short.test/<b>{{ link.short }}</b></a></p>
+            <p class="mr-2" style="display: inline"><a :href="link.short">short.test/<b>{{ link.short
+                }}</b></a>
+            </p>
             <div class="btn btn-outline-primary btn-sm">Copy</div>
             <div class="btn btn-outline-primary btn-sm">Edit</div>
 
