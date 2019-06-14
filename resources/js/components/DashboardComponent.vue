@@ -25,6 +25,7 @@
 <script>
   import LinkChartComponent from './LinkChartComponent.vue'
   import LinkListComponent from './LinkListComponent.vue'
+  import SelectedLinkInformationComponent from './SelectedLinkInformationComponent.vue'
 
   export default {
     name: 'DashboardComponent',

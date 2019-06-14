@@ -31,8 +31,6 @@ Vue.component('shorten-link-form-component', require('./components/ShortenLinkFo
 
 Vue.component('previous-links-component', require('./components/PreviousLinksListComponent.vue').default)
 
-Vue.component('selected-link-information-component', require('./components/SelectedLinkInformationComponent.vue').default)
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
