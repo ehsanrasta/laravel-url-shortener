@@ -25,11 +25,11 @@ window.Vue.use(VueSweetalert2)
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('dashboard-component', require('./components/DashboardComponent.vue').default)
+
 Vue.component('shorten-link-form-component', require('./components/ShortenLinkFormComponent.vue').default)
 
 Vue.component('previous-links-component', require('./components/PreviousLinksListComponent.vue').default)
-
-Vue.component('link-chart-component', require('./components/LinkChartComponent.vue').default)
 
 Vue.component('all-links-component', require('./components/LinksListComponent.vue').default)
 
