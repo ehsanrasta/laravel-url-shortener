@@ -25,10 +25,6 @@ window.Vue.use(VueSweetalert2)
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('dashboard-component', require('./components/DashboardComponent.vue').default)
-
-Vue.component('shorten-link-form-component', require('./components/ShortenLinkFormComponent.vue').default)
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -47,6 +43,12 @@ Vue.filter('momentDayYear', function (text) {
   return moment(text).format('MMMM Do YYYY')
 })
 
+import DashboardComponent from './components/DashboardComponent.vue'
+import ShortenLinkFormComponent from './components/ShortenLinkFormComponent.vue'
+
 const app = new Vue({
-  el: '#app',
-})
+  components: {
+    DashboardComponent,
+    ShortenLinkFormComponent
+  },
+}).$mount('#app')
