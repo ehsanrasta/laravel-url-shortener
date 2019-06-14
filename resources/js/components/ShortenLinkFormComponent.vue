@@ -18,15 +18,21 @@
             </div>
         </transition>
 
-        <previous-links-component :previous-links="previousLinks"
-                                  v-if="previousLinks.length > 0"></previous-links-component>
+        <previous-link-list-component :previous-links="previousLinks"
+                                      v-if="previousLinks.length > 0"></previous-link-list-component>
     </div>
 </template>
 
 <script>
   import linksClient from './../api/links'
 
+  import PreviousLinkListComponent from './PreviousLinksListComponent.vue'
+
   export default {
+    components: {
+      PreviousLinkListComponent,
+    },
+
     data () {
       return {
         previousLinks: [],
