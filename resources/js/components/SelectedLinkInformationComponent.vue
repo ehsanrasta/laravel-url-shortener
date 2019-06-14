@@ -31,7 +31,9 @@
   export default {
     name: 'SelectedLinkInformationComponent',
 
-    props: ['link'],
+    props: {
+      link: {},
+    },
   }
 </script>
 

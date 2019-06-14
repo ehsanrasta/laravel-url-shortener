@@ -28,7 +28,9 @@
   export default {
     name: 'LinkListComponent',
 
-    props: ['links'],
+    props: {
+      links: [],
+    },
 
     data () {
       return {
