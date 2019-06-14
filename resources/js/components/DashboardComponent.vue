@@ -30,7 +30,7 @@
   export default {
     name: 'DashboardComponent',
 
-    components: {LinkListComponent, LinkChartComponent}
+    components: {LinkChartComponent, LinkListComponent, SelectedLinkInformationComponent}
   }
 </script>
 
