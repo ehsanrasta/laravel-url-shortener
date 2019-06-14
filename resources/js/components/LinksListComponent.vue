@@ -15,9 +15,9 @@
                     <h5>{{ link.original | truncate(30) }}</h5>
                     <span>{{ link.clicks }} <i class="far fa-chart-bar"></i></span>
                 </div>
-                <a :href="'http://short.test/' + link.short">
+                <p>
                     <small>short.test/<b>{{ link.short }}</b></small>
-                </a>
+                </p>
             </li>
         </ul>
     </div>
