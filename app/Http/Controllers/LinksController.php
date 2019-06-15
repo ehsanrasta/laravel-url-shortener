@@ -71,7 +71,7 @@ class LinksController extends Controller
         $link = Link::find(app()->encoder->decode($request->short))
             ->first();
 
-        $link->incrementClicks();
+        $link->addClick();
 
         return redirect()->to($link->original);
     }

@@ -21,9 +21,16 @@ class Link extends Model
         'short'
     ];
 
-    public function incrementClicks()
+    public function addClick()
     {
-        $this->increment('clicks');
+        $this->clicks()->create([
+            'link_id' => $this->id,
+        ]);
+    }
+
+    public function clicks()
+    {
+        return $this->hasMany(Click::class);
     }
 
     public function getShortAttribute()
@@ -34,10 +41,5 @@ class Link extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function clicks()
-    {
-        return $this->hasMany(Click::class);
     }
 }
