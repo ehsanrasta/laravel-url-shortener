@@ -25,7 +25,7 @@ class ReadLinksTest extends TestCase
         $response->assertStatus(200)
             ->assertExactJson(auth()->user()->links()->get()->toArray())
             ->assertJsonStructure([
-                '*' => ['created_at', 'original', 'short', 'clicks']
+                '*' => ['created_at', 'original', 'short']
             ]);
     }
 
@@ -50,18 +50,5 @@ class ReadLinksTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertEquals(0, sizeof($response->decodeResponseJson()));
-    }
-
-    public function test_it_increments_clicks()
-    {
-        $link = factory(Link::class)->create();
-
-        $this->assertEquals(0, $link->clicks);
-
-        $this->get('/' . $link->short);
-
-        $link = $link->fresh();
-
-        $this->assertEquals(1, $link->clicks);
     }
 }
