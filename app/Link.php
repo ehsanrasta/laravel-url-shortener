@@ -17,8 +17,12 @@ class Link extends Model
         'updated_at',
     ];
 
+    protected $with = [
+        'clicks'
+    ];
+
     protected $appends = [
-        'short'
+        'short',
     ];
 
     public function addClick()
@@ -31,11 +35,6 @@ class Link extends Model
     public function clicks()
     {
         return $this->hasMany(Click::class);
-    }
-
-    public function getTotalClicksAttribute()
-    {
-        return $this->clicks()->get()->count();
     }
 
     public function getShortAttribute()

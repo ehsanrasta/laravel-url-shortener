@@ -28,7 +28,10 @@ class LinksController extends Controller
             return collect();
         }
 
-        return auth()->user()->links()->orderBy('created_at', 'DESC')->get();
+        return auth()->user()
+            ->links()
+            ->orderBy('created_at', 'DESC')
+            ->get();
     }
 
     public function create()
