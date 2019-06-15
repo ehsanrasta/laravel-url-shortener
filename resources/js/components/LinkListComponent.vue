@@ -14,7 +14,7 @@
                 <small class="d-flex w-100 text-uppercase">{{ link.created_at | momentDay }}</small>
                 <div class="d-flex w-100 justify-content-between">
                     <h5>{{ link.original | truncate(30) }}</h5>
-                    <span>{{ link.clicks }} <i class="far fa-chart-bar"></i></span>
+                    <span>{{ link.clicks.length }} <i class="far fa-chart-bar"></i></span>
                 </div>
                 <p>
                     <small>short.test/<b>{{ link.short }}</b></small>

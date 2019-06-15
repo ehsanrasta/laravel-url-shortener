@@ -20,7 +20,7 @@
             <hr>
 
             <div class="d-flex flex-column align-items-start">
-                <h4 style="display: inline">{{ link.clicks }} <i class="far fa-chart-bar"></i></h4>
+                <h4 style="display: inline">{{ link.clicks.length }} <i class="far fa-chart-bar"></i></h4>
                 <small class="d-flex text-muted text-uppercase mb-1">Total clicks</small>
             </div>
         </div>
