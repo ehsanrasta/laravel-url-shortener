@@ -33,6 +33,11 @@ class Link extends Model
         return $this->hasMany(Click::class);
     }
 
+    public function getTotalClicksAttribute()
+    {
+        return $this->clicks()->get()->count();
+    }
+
     public function getShortAttribute()
     {
         return app()->encoder->encode($this->id);

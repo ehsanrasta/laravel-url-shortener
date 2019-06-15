@@ -51,4 +51,17 @@ class ReadLinksTest extends TestCase
 
         $this->assertEquals(0, sizeof($response->decodeResponseJson()));
     }
+
+    public function test_it_increments_clicks()
+    {
+        $link = factory(Link::class)->create();
+
+        $this->assertEquals(0, $link->total_clicks);
+
+        $this->get('/' . $link->short);
+
+        $link = $link->fresh();
+
+        $this->assertEquals(1, $link->total_clicks);
+    }
 }
