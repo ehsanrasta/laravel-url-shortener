@@ -17,10 +17,6 @@ class Link extends Model
         'updated_at',
     ];
 
-    protected $with = [
-        'clicks'
-    ];
-
     protected $appends = [
         'short',
     ];

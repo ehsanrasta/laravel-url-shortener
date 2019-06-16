@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Link;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class LinksController extends Controller
         return auth()->user()
             ->links()
             ->orderBy('created_at', 'DESC')
+            ->with('clicks')
             ->get();
     }
 
