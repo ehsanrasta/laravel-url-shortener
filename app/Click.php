@@ -13,4 +13,9 @@ class Click extends Model
         'link_id',
         'updated_at',
     ];
+
+    public function link()
+    {
+        return $this->hasOne(Link::class);
+    }
 }
