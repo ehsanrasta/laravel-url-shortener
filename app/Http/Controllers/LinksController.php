@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Link;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -78,7 +79,7 @@ class LinksController extends Controller
         $link = Link::find(app()->encoder->decode($request->short))
             ->first();
 
-        $link->addClick();
+        $link->addClick(Carbon::now());
 
         return redirect()->to($link->original);
     }

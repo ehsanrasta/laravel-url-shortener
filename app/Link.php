@@ -24,10 +24,11 @@ class Link extends Model
         'clicksByMonth'
     ];
 
-    public function addClick()
+    public function addClick($date)
     {
         $this->clicks()->create([
             'link_id' => $this->id,
+            'created_at' => $date,
         ]);
 
         //TODO: Job queue instead
@@ -47,11 +48,11 @@ class Link extends Model
             $clickmcount[(int)$key] = count($value);
         }
 
-        for ($i = 0; $i <= 11; $i++) {
+        for ($i = 1; $i <= 12; $i++) {
             if (!empty($clickmcount[$i])) {
-                $clickArr[$i] = $clickmcount[$i];
+                $clickArr[$i - 1] = $clickmcount[$i];
             } else {
-                $clickArr[$i] = 0;
+                $clickArr[$i - 1] = 0;
             }
         }
 
