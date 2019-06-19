@@ -4,14 +4,18 @@
   export default {
     name: 'LinkChartComponent',
 
+    props: ['link'],
+
     extends: Line,
 
     mounted () {
+      let vm = this
+
       let data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         datasets:
           [{
-            data: [10, 20, 15, 5, 30, 60, 70, 20, 30, 10, 50, 70],
+            data: vm.link.clicksByMonth,
             backgroundColor: 'rgba(52, 144, 220, 0.2)',
             borderColor: 'rgba(52, 144, 220, 1)',
           }]
