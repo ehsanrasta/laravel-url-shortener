@@ -8,38 +8,55 @@
 
     extends: Line,
 
+    computed: {
+      chartData: function () {
+        return this.link.clicksByMonth
+      }
+    },
+
     mounted () {
-      let vm = this
+      this.renderAreaChart()
+    },
 
-      let data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets:
-          [{
-            data: vm.link.clicksByMonth,
-            backgroundColor: 'rgba(52, 144, 220, 0.2)',
-            borderColor: 'rgba(52, 144, 220, 1)',
-          }]
+    methods: {
+      renderAreaChart () {
+        let data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets:
+            [{
+              data: this.chartData,
+              backgroundColor: 'rgba(52, 144, 220, 0.2)',
+              borderColor: 'rgba(52, 144, 220, 1)',
+            }]
+        }
+
+        let options = {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+
+          legend: {
+            display: false
+          },
+
+          responsive: true,
+
+          maintainAspectRatio: false,
+        }
+
+        this.renderChart(data, options)
       }
+    },
 
-      let options = {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-
-        legend: {
-          display: false
-        },
-
-        responsive: true,
-
-        maintainAspectRatio: false,
+    watch: {
+      chartData () {
+        this.$data._chart.destroy()
+        this.renderAreaChart()
       }
-
-      this.renderChart(data, options)
     }
   }
 </script>
