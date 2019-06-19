@@ -35,11 +35,8 @@ class LinksController extends Controller
             ->orderBy('created_at', 'DESC')
             ->with([
                 'clicks' => function ($query) {
-                    $query->select('id', 'created_at')
-                        ->get()
-                        ->groupBy(function ($date) {
-                            return Carbon::parse($date->created_at)->format('m');
-                        });
+                    $query->groupBy(\DB::raw('month, link_id'))
+                        ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
                 }
             ])
             ->get();

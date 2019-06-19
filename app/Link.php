@@ -17,7 +17,6 @@ class Link extends Model
         'user_id',
         'id',
         'updated_at',
-        'clicks'
     ];
 
     protected $appends = [
@@ -44,6 +43,8 @@ class Link extends Model
     {
         $clickmcount = [];
         $clickArr = [];
+
+        dd($this->clicks);
 
         foreach ($this->clicks as $key => $value) {
             $clickmcount[(int)$key] = count($value);
