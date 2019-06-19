@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Link;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -25,15 +23,19 @@ class LinksController extends Controller
 
     private function getLinksForUserOrGuest()
     {
+        // TODO: Refactor to Resource response.
+
         if (auth()->guest()) {
             return collect();
         }
 
-        return auth()->user()
+        $links = auth()->user()
             ->links()
             ->orderBy('created_at', 'DESC')
             ->with('clicks')
             ->get();
+
+        return $links;
     }
 
     public function create()
@@ -56,7 +58,7 @@ class LinksController extends Controller
         ]);
     }
 
-    private function createLinkForUserOrGuest($data): Link
+    private function createLinkForUserOrGuest($data)
     {
         if (auth()->guest()) {
             return Link::create($data);
