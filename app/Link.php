@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
@@ -44,7 +45,7 @@ class Link extends Model
         $clickmcount = [];
         $clickArr = [];
 
-        foreach ($this->groupClicksByMonth() as $key => $value) {
+        foreach ($this->clicks as $key => $value) {
             $clickmcount[(int)$key] = count($value);
         }
 
@@ -57,13 +58,6 @@ class Link extends Model
         }
 
         return $clickArr;
-    }
-
-    public function groupClicksByMonth()
-    {
-        return $this->clicks->groupBy(function ($click) {
-            return $click->created_at->format('m');
-        });
     }
 
     function getShortAttribute()

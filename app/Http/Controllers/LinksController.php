@@ -33,7 +33,15 @@ class LinksController extends Controller
         $links = auth()->user()
             ->links()
             ->orderBy('created_at', 'DESC')
-            ->with('clicks')
+            ->with([
+                'clicks' => function ($query) {
+                    $query->select('id', 'created_at')
+                        ->get()
+                        ->groupBy(function ($date) {
+                            return Carbon::parse($date->created_at)->format('m');
+                        });
+                }
+            ])
             ->get();
 
         return $links;
