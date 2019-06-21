@@ -10,7 +10,10 @@
 
     computed: {
       chartData: function () {
-        return this.link.clicksByMonth
+        if (this.link) {
+          return this.link.clicksByMonth
+        }
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       }
     },
 

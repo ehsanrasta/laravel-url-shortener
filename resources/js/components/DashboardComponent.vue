@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <link-chart-component :link="selectedLink" v-if="selectedLink"></link-chart-component>
+                        <link-chart-component :link="selectedLink"></link-chart-component>
                     </div>
                 </div>
             </div>
