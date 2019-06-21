@@ -28,7 +28,7 @@
           datasets:
             [{
               data: this.chartData,
-              backgroundColor: 'rgba(52, 144, 220, 0.2)',
+              backgroundColor: 'rgba(52, 144, 220, 0.3)',
               borderColor: 'rgba(52, 144, 220, 1)',
             }]
         }
