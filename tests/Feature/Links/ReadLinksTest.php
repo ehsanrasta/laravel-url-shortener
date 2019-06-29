@@ -58,7 +58,7 @@ class ReadLinksTest extends TestCase
 
         $this->assertEquals(0, $link->clicks()->get()->count());
 
-        $this->get('/' . $link->short);
+        $this->get('/'.$link->short);
 
         $link = $link->fresh();
 
