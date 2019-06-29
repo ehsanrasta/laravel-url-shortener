@@ -22,4 +22,28 @@ class LinkModelTest extends TestCase
 
         $this->assertInstanceOf(User::class, $link->user);
     }
+
+    public function test_it_returns_clicks_by_month()
+    {
+        $link = factory(Link::class)->create();
+
+        for ($i = 0; $i < 3; $i++) {
+            $link->addClick(new Carbon('first day of January 2019'));
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $link->addClick(new Carbon('first day of March 2019'));
+        }
+
+        $link->addClick(new Carbon('first day of December 2019'));
+
+        $link->load([
+            'clicks' => function ($query) {
+                $query->groupBy(\DB::raw('month, link_id'))
+                    ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
+            }
+        ]);
+
+        $this->assertEquals([3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1], $link->clicks_by_month);
+    }
 }
