@@ -17,7 +17,6 @@ class Link extends Model
         'user_id',
         'id',
         'updated_at',
-        'clicks'
     ];
 
     protected $appends = [
@@ -42,10 +41,14 @@ class Link extends Model
 
     public function getClicksByMonthAttribute()
     {
-        $clicksByMonth = [];
+        $clicksByMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        for ($i = 0; $i < 12; $i++) {
-            $clicksByMonth[$i] = (int)$this->clicks[$i]['click_count'];
+        if (empty($this->clicks)) {
+            return [];
+        }
+
+        foreach ($this->clicks as $click) {
+            $clicksByMonth[$click->month - 1] = $click->click_count;
         }
 
         return $clicksByMonth;
