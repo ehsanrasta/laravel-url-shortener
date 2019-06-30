@@ -21,7 +21,8 @@ class Link extends Model
 
     protected $appends = [
         'short',
-        'clicksByMonth'
+        'clicksByMonth',
+        'totalClicks',
     ];
 
     public function addClick($date)
@@ -52,6 +53,13 @@ class Link extends Model
         }
 
         return $clicksByMonth;
+    }
+
+    public function getTotalClicksAttribute()
+    {
+        return array_reduce($this->clicksByMonth, function ($carry, $item) {
+            return $carry + $item;
+        });
     }
 
     function getShortAttribute()
