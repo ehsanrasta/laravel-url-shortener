@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Link;
-use Illuminate\Database\Eloquent\Collection;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -24,11 +24,24 @@ class LinksController extends Controller
 
     private function getLinksForUserOrGuest()
     {
+        // TODO: Refactor to Resource response.
+
         if (auth()->guest()) {
             return collect();
         }
 
-        return auth()->user()->links()->orderBy('created_at', 'DESC')->get();
+        $links = auth()->user()
+            ->links()
+            ->orderBy('created_at', 'DESC')
+            ->with([
+                'clicks' => function ($query) {
+                    $query->groupBy(\DB::raw('month, link_id'))
+                        ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
+                }
+            ])
+            ->get();
+
+        return $links;
     }
 
     public function create()
@@ -51,7 +64,7 @@ class LinksController extends Controller
         ]);
     }
 
-    private function createLinkForUserOrGuest($data): Link
+    private function createLinkForUserOrGuest($data)
     {
         if (auth()->guest()) {
             return Link::create($data);
@@ -71,7 +84,7 @@ class LinksController extends Controller
         $link = Link::find(app()->encoder->decode($request->short))
             ->first();
 
-        $link->incrementClicks();
+        $link->addClick(Carbon::now());
 
         return redirect()->to($link->original);
     }

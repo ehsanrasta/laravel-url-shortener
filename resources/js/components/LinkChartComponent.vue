@@ -4,38 +4,62 @@
   export default {
     name: 'LinkChartComponent',
 
+    props: ['link'],
+
     extends: Line,
 
+    computed: {
+      chartData: function () {
+        if (this.link) {
+          return this.link.clicksByMonth
+        }
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }
+    },
+
     mounted () {
-      let data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets:
-          [{
-            data: [10, 20, 15, 5, 30, 60, 70, 20, 30, 10, 50, 70],
-            backgroundColor: 'rgba(52, 144, 220, 0.2)',
-            borderColor: 'rgba(52, 144, 220, 1)',
-          }]
+      this.renderAreaChart()
+    },
+
+    methods: {
+      renderAreaChart () {
+        let data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets:
+            [{
+              data: this.chartData,
+              backgroundColor: 'rgba(52, 144, 220, 0.3)',
+              borderColor: 'rgba(52, 144, 220, 1)',
+            }]
+        }
+
+        let options = {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+
+          legend: {
+            display: false
+          },
+
+          responsive: true,
+
+          maintainAspectRatio: false,
+        }
+
+        this.renderChart(data, options)
       }
+    },
 
-      let options = {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-
-        legend: {
-          display: false
-        },
-
-        responsive: true,
-
-        maintainAspectRatio: false,
+    watch: {
+      chartData () {
+        this.$data._chart.destroy()
+        this.renderAreaChart()
       }
-
-      this.renderChart(data, options)
     }
   }
 </script>

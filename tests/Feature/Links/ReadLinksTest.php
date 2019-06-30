@@ -23,9 +23,9 @@ class ReadLinksTest extends TestCase
         $response = $this->json('GET', '/api/links');
 
         $response->assertStatus(200)
-            ->assertExactJson(auth()->user()->links()->get()->toArray())
+            ->assertExactJson(auth()->user()->links()->with('clicks')->get()->toArray())
             ->assertJsonStructure([
-                '*' => ['created_at', 'original', 'short', 'clicks']
+                '*' => ['created_at', 'original', 'short']
             ]);
     }
 
@@ -56,12 +56,12 @@ class ReadLinksTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $this->assertEquals(0, $link->clicks);
+        $this->assertEquals(0, $link->clicks()->get()->count());
 
-        $this->get('/' . $link->short);
+        $this->get('/'.$link->short);
 
         $link = $link->fresh();
 
-        $this->assertEquals(1, $link->clicks);
+        $this->assertEquals(1, $link->clicks()->get()->count());
     }
 }
