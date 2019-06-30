@@ -11,7 +11,7 @@
         </div>
 
         <div class="row justify-content-between">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-5">
                 <link-list-component :links="links" v-model="selectedLink"></link-list-component>
             </div>
 

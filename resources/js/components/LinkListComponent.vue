@@ -12,13 +12,11 @@
                 style="cursor: pointer;"
                 v-for="(link, index) in links">
                 <small class="d-flex w-100 text-uppercase">{{ link.created_at | momentDay }}</small>
+                <h5>{{ link.original | truncate(30) }}</h5>
                 <div class="d-flex w-100 justify-content-between">
-                    <h5>{{ link.original | truncate(30) }}</h5>
-                    <span>{{ 5 }} <i class="far fa-chart-bar"></i></span>
-                </div>
-                <p>
                     <small>short.test/<b>{{ link.short }}</b></small>
-                </p>
+                    <span>{{ link.totalClicks }} <i class="far fa-chart-bar"></i></span>
+                </div>
             </li>
         </ul>
     </div>
