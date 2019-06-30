@@ -28,9 +28,7 @@
   export default {
     name: 'LinkListComponent',
 
-    props: {
-      links: [],
-    },
+    props: ['links'],
 
     data () {
       return {
@@ -42,6 +40,11 @@
     methods: {
       setSelected (link, index) {
         this.selectedLink = link
+
+        this.selectedLink.totalClicks = this.selectedLink.clicksByMonth.reduce(function (tot, record) {
+          return tot + record
+        })
+
         this.selectedIndex = index
 
         this.$emit('input', link)
