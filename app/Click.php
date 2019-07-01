@@ -16,6 +16,6 @@ class Click extends Model
 
     public function link()
     {
-        return $this->hasOne(Link::class);
+        return $this->belongsTo(Link::class);
     }
 }
