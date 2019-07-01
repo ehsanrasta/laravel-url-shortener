@@ -42,7 +42,7 @@ class Link extends Model
 
     public function getClicksByMonthAttribute()
     {
-        if (empty($this->clicks)) {
+        if (count($this->clicks) === 0) {
             return [];
         }
 

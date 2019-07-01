@@ -27,6 +27,8 @@ class LinkModelTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
+        $this->assertEquals([], $link->clicks_by_month);
+
         for ($i = 0; $i < 3; $i++) {
             $link->addClick(new Carbon('first day of January 2019'));
         }
