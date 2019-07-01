@@ -11,6 +11,11 @@ class EncoderProviderTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_it_can_be_constructed()
+    {
+        $this->assertInstanceOf(Hashids::class, $this->app->encoder);
+    }
+
     /**
      * Test that a link's id can be encoded to a unique string.
      *
