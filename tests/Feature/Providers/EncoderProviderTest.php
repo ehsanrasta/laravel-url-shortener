@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Link;
+use Hashids\Hashids;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -4,9 +4,12 @@
 namespace Tests\Feature\Http\Controllers;
 
 
+use App\Link;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class LinksControllerTest
+class LinksControllerTest extends TestCase
 {
     use RefreshDatabase;
 
