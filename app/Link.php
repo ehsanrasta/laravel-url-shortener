@@ -42,11 +42,11 @@ class Link extends Model
 
     public function getClicksByMonthAttribute()
     {
-        if (count($this->clicks) === 0) {
-            return [];
-        }
-
         $clicksByMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        if (count($this->clicks) === 0) {
+            return $clicksByMonth;
+        }
 
         foreach ($this->clicks as $click) {
             $clicksByMonth[$click->month - 1] = $click->click_count;
