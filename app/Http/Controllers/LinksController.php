@@ -97,11 +97,18 @@ class LinksController extends Controller
             ['short' => 'required']
         );
 
+        // Check if it's a custom link
         $linkId = DB::table('custom_links')->where('custom', $request->short)->value('link_id');
         $link = Link::find($linkId);
 
+        // Check if it's a hashid's generated short link
         if (!isset($link) && sizeof(app()->encoder->decode($request->short)) > 0) {
             $link = Link::where('id', app()->encoder->decode($request->short)[0])->firstOrFail();
+        }
+
+        // If none of the above, 404
+        if (!isset($link)) {
+            abort(404);
         }
 
         $link->addClick(Carbon::now());
