@@ -15,6 +15,7 @@ class Link extends Model
 
     protected $hidden = [
         'user_id',
+        'customLink',
         'id',
         'updated_at',
     ];
@@ -64,14 +65,16 @@ class Link extends Model
 
     function getShortAttribute()
     {
+        if (isset($this->customLink)) {
+            return $this->customLink->custom;
+        }
+
         return app()->encoder->encode($this->id);
     }
 
-    function getCustomAttribute()
+    public function customLink()
     {
-        // TODO: SQL Injection at ->value('custom')?
-        // TODO: N+1 problem
-        return DB::table('custom_links')->where('link_id', $this->id)->value('custom');
+        return $this->hasOne(CustomLink::class);
     }
 
     public function user()

@@ -39,11 +39,12 @@ class LinksController extends Controller
                 'clicks' => function ($query) {
                     $query->groupBy(\DB::raw('month, link_id'))
                         ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
-                }
-            ])
-            ->get();
+                },
+                'customLink'
+            ])->get();
 
         return $links;
+
     }
 
     public function create()
@@ -53,6 +54,8 @@ class LinksController extends Controller
 
     public function store(Request $request)
     {
+        // TODO: Insert a blank row if collision with a custom link?
+
         $data = $request->validate([
             'original' => 'required|url',
         ]);

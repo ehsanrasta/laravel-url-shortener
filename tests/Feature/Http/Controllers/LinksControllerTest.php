@@ -149,7 +149,9 @@ class LinksControllerTest extends TestCase
 
         $response = $this->json('PUT', '/api/link/'.$link->short, $data);
 
-        $this->assertEquals($data['custom'], $link->custom);
+        $link->refresh();
+
+        $this->assertEquals($data['custom'], $link->short);
     }
 
     public function test_it_redirects_a_custom_link()
@@ -166,9 +168,11 @@ class LinksControllerTest extends TestCase
 
         $response = $this->json('PUT', '/api/link/'.$link->short, $data);
 
-        $this->assertEquals($data['custom'], $link->custom);
+        $link->refresh();
 
-        $this->get('/'.$link->custom)
+        $this->assertEquals($data['custom'], $link->short);
+
+        $this->get('/'.$link->short)
             ->assertRedirect($link->original);
     }
 }
