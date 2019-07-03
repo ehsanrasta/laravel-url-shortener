@@ -67,8 +67,14 @@ class Link extends Model
         return app()->encoder->encode($this->id);
     }
 
-    public
-    function user()
+    function getCustomAttribute()
+    {
+        // TODO: SQL Injection at ->value('custom')?
+        // TODO: N+1 problem
+        return DB::table('custom_links')->where('link_id', $this->id)->value('custom');
+    }
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

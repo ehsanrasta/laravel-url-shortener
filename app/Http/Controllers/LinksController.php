@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use Carbon\Carbon;
+use DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -73,6 +75,17 @@ class LinksController extends Controller
         return auth()->user()->links()->create($data);
     }
 
+    public function update(Request $request)
+    {
+        //todo: validate
+
+        \DB::table('custom_links')
+            ->insert([
+                'link_id' => app()->encoder->decode($request->short)[0],
+                'custom' => $request->custom
+            ]);
+    }
+
     public function show(Request $request)
     {
         $data = $request->validate(
@@ -81,8 +94,12 @@ class LinksController extends Controller
             ['short' => 'required']
         );
 
-        $link = Link::find(app()->encoder->decode($request->short))
-            ->first();
+        $linkId = DB::table('custom_links')->where('custom', $request->short)->value('link_id');
+        $link = Link::find($linkId);
+
+        if (!isset($link) && sizeof(app()->encoder->decode($request->short)) > 0) {
+            $link = Link::where('id', app()->encoder->decode($request->short)[0])->firstOrFail();
+        }
 
         $link->addClick(Carbon::now());
 

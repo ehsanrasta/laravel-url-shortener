@@ -25,6 +25,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/shorten', 'LinksController@store');
 
     Route::get('/links', 'LinksController@index');
+
+    Route::put('/link/{short}', 'LinksController@update');
 });
 
 Route::get('/{short}', 'LinksController@show');

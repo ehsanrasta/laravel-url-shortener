@@ -112,6 +112,8 @@ class LinksControllerTest extends TestCase
 
     public function test_it_increments_clicks()
     {
+        $this->withoutExceptionHandling();
+
         $link = factory(Link::class)->create();
 
         $this->assertEquals(0, $link->clicks()->get()->count());
@@ -132,6 +134,41 @@ class LinksControllerTest extends TestCase
         $link = Link::find($response->decodeResponseJson()['id']);
 
         $this->get('/'.$link->short)
+            ->assertRedirect($link->original);
+    }
+
+    public function test_it_creates_a_custom_link()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $link = factory(Link::class)->create();
+
+        $data = [
+            'custom' => 'a-custom-link'
+        ];
+
+        $response = $this->json('PUT', '/api/link/'.$link->short, $data);
+
+        $this->assertEquals($data['custom'], $link->custom);
+    }
+
+    public function test_it_redirects_a_custom_link()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $link = factory(Link::class)->create();
+
+        $data = [
+            'custom' => 'a-custom-link'
+        ];
+
+        $response = $this->json('PUT', '/api/link/'.$link->short, $data);
+
+        $this->assertEquals($data['custom'], $link->custom);
+
+        $this->get('/'.$link->custom)
             ->assertRedirect($link->original);
     }
 }
