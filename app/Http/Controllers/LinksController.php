@@ -82,6 +82,8 @@ class LinksController extends Controller
     {
         //todo: validate
 
+        //todo: if previous custom link, delete it and insert new one
+
         \DB::table('custom_links')
             ->insert([
                 'link_id' => app()->encoder->decode($request->short)[0],

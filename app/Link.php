@@ -18,6 +18,7 @@ class Link extends Model
         'customLink',
         'id',
         'updated_at',
+        'clicks'
     ];
 
     protected $appends = [
