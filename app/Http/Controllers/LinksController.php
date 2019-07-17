@@ -44,7 +44,6 @@ class LinksController extends Controller
             ])->get();
 
         return $links;
-
     }
 
     public function create()
@@ -80,15 +79,27 @@ class LinksController extends Controller
 
     public function update(Request $request)
     {
-        //todo: validate
+        //todo validate
 
-        //todo: if previous custom link, delete it and insert new one
+        //todo do something if a short link is taken
+
+        $link = Link::getLinkInstanceOrNull($request->short);
+
+        if (!isset($link)) {
+            abort(404);
+        }
+
+        DB::table('custom_links')->where('link_id', $link->id)->delete();
 
         \DB::table('custom_links')
             ->insert([
-                'link_id' => app()->encoder->decode($request->short)[0],
+                'link_id' => $link->id,
                 'custom' => $request->custom
             ]);
+
+        // TODO return something else?
+
+        return $link->toJson();
     }
 
     public function show(Request $request)
