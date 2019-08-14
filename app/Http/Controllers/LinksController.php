@@ -40,7 +40,6 @@ class LinksController extends Controller
                     $query->groupBy(\DB::raw('month, link_id'))
                         ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
                 },
-                'customLink'
             ])->get();
 
         return $links;

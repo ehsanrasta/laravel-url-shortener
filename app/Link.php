@@ -15,7 +15,6 @@ class Link extends Model
 
     protected $hidden = [
         'user_id',
-        'customLink',
         'id',
         'updated_at',
         'clicks'
@@ -82,11 +81,6 @@ class Link extends Model
         }
 
         return app()->encoder->encode($this->id);
-    }
-
-    public function customLink()
-    {
-        return $this->hasOne(CustomLink::class);
     }
 
     public function user()
