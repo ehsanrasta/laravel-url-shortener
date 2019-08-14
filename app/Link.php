@@ -76,10 +76,6 @@ class Link extends Model
 
     function getShortAttribute()
     {
-        if (isset($this->customLink)) {
-            return $this->customLink->custom;
-        }
-
         return app()->encoder->encode($this->id);
     }
 
