@@ -53,8 +53,6 @@ class LinksController extends Controller
 
     public function store(Request $request)
     {
-        // TODO: Insert a blank row if collision with a custom link?
-
         $data = $request->validate([
             'original' => 'required|url',
         ]);
@@ -75,31 +73,6 @@ class LinksController extends Controller
         }
 
         return auth()->user()->links()->create($data);
-    }
-
-    public function update(Request $request)
-    {
-        //todo validate
-
-        //todo do something if a short link is taken
-
-        $link = Link::getLinkInstanceOrNull($request->short);
-
-        if (!isset($link)) {
-            abort(404);
-        }
-
-        DB::table('custom_links')->where('link_id', $link->id)->delete();
-
-        \DB::table('custom_links')
-            ->insert([
-                'link_id' => $link->id,
-                'custom' => $request->custom
-            ]);
-
-        // TODO return something else?
-
-        return $link->toJson();
     }
 
     public function show(Request $request)

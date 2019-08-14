@@ -14,8 +14,6 @@
             <p class="mr-2" style="display: inline"><a :href="link.short">short.test/<b>{{ link.short
                 }}</b></a>
             </p>
-            <div class="btn btn-outline-primary btn-sm">Copy</div>
-            <div class="btn btn-outline-primary btn-sm">Edit</div>
 
             <hr>
 
