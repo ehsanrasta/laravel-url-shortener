@@ -5,10 +5,6 @@
                 Created {{ link.created_at | momentDayYear }} |
             </small>
 
-            <small>
-                <a href="">etienneac</a>
-            </small>
-
             <h4 class="mt-3 mb-3">{{ link.original }}</h4>
 
             <p class="mr-2" style="display: inline"><a :href="link.short">short.test/<b>{{ link.short
