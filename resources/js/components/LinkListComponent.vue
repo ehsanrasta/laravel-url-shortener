@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-3">
         <div class="d-flex justify-content-between">
             <p class="form-text text-muted py-0 my-0">{{ links.length }} links</p>
             <p class="form-text text-muted py-0 my-0">Clicks all time</p>
