@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreShortLink;
 use App\Link;
 use Carbon\Carbon;
 use DB;
@@ -42,11 +43,9 @@ class LinksController extends Controller
         return view('links.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreShortLink $request)
     {
-        $data = $request->validate([
-            'original' => 'required|url',
-        ]);
+        $data = $request->validated();
 
         $link = $this->createLinkForUserOrGuest($data);
 
