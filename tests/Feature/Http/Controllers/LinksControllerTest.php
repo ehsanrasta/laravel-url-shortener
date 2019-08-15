@@ -89,6 +89,8 @@ class LinksControllerTest extends TestCase
 
     public function test_it_returns_all_links()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAs(factory(User::class)->create());
 
         factory(Link::class, 5)->create([

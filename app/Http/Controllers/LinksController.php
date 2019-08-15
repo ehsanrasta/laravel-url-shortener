@@ -34,15 +34,7 @@ class LinksController extends Controller
             return collect();
         }
 
-        $links = auth()->user()
-            ->links()
-            ->orderBy('created_at', 'DESC')
-            ->with([
-                'clicks' => function ($query) {
-                    $query->groupBy(\DB::raw('month, link_id'))
-                        ->selectRaw('MONTH(created_at) as month, count(id) as click_count, link_id');
-                },
-            ])->get();
+        $links = auth()->user()->links()->get();
 
         return $links;
     }
