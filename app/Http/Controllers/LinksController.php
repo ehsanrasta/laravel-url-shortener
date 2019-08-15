@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Link;
 use Carbon\Carbon;
 use DB;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Resources\Link as LinkResource;
-use App\Http\Resources\LinkCollection;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
