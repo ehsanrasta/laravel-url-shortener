@@ -6,6 +6,8 @@ use App\Link;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Resources\Link as LinkResource;
+use App\Http\Resources\LinkCollection;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -58,11 +60,7 @@ class LinksController extends Controller
 
         $link = $this->createLinkForUserOrGuest($data);
 
-        return response()->json([
-            'id' => $link->id,
-            'original' => $link->original,
-            'short' => $link->short,
-        ]);
+        return response()->json(new LinkResource($link));
     }
 
     private function createLinkForUserOrGuest($data)
