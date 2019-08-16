@@ -22,14 +22,11 @@ class LinksController extends Controller
 
         /**
          * TODO: Do something when the request does not want JSON.
-         *       Redirect or show a view? Extract JSON logic to an API controller?
          */
     }
 
     private function getLinksForUserOrGuest()
     {
-        // TODO: Refactor to Resource response.
-
         if (auth()->guest()) {
             return collect();
         }
