@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShowShortLink;
 use App\Http\Requests\StoreShortLink;
 use App\Link;
 use Carbon\Carbon;
@@ -61,13 +62,9 @@ class LinksController extends Controller
         return auth()->user()->links()->create($data);
     }
 
-    public function show(Request $request)
+    public function show(ShowShortLink $request, $short)
     {
-        $data = $request->validate(
-            array_merge($request->all(),
-                ['short' => $request->short]),
-            ['short' => 'required']
-        );
+        $data = $request->validated();
 
         $link = Link::getLinkInstanceOrNull($request->short);
 
