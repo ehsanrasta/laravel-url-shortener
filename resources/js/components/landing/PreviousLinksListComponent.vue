@@ -28,9 +28,7 @@
       }
     },
 
-    props: {
-      previousLinks: [],
-    },
+    props: ['previousLinks'],
 
     methods: {
       copy (shortLink, index) {
