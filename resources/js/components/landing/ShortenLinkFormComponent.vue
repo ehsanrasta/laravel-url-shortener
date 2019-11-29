@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import linksClient from './../api/links'
+  import linksClient from '../../api/links'
 
   import PreviousLinkListComponent from './PreviousLinksListComponent.vue'
 
