@@ -14,11 +14,6 @@
             <div class="col-sm-12 col-md-5">
                 <link-list-component :links="links" v-model="selectedLink"></link-list-component>
             </div>
-
-            <div class="col-sm-12 col-md-7">
-                <selected-link-information-component :link="selectedLink"
-                                                     v-if="selectedLink"></selected-link-information-component>
-            </div>
         </div>
     </div>
 </template>
@@ -26,14 +21,13 @@
 <script>
   import LinkChartComponent from './LinkChartComponent.vue'
   import LinkListComponent from './LinkListComponent.vue'
-  import SelectedLinkInformationComponent from './SelectedLinkInformationComponent.vue'
 
-  import LinksClient from '../api/links'
+  import LinksClient from '../../api/links'
 
   export default {
     name: 'DashboardComponent',
 
-    components: {LinkChartComponent, LinkListComponent, SelectedLinkInformationComponent},
+    components: {LinkChartComponent, LinkListComponent},
 
     data () {
       return {
