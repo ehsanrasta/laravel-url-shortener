@@ -30,23 +30,26 @@ window.Vue.use(VueSweetalert2)
  */
 
 Vue.filter('truncate', function (text, stop, clamp) {
-  return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
+    return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
 })
 
 Vue.filter('momentDay', function (text) {
-  return moment(text).format('MMM D')
+    return moment(text).format('MMM D')
 })
 
 Vue.filter('momentDayYear', function (text) {
-  return moment(text).format('MMMM Do YYYY')
+    return moment(text).format('MMMM Do YYYY')
 })
 
+// TODO: Is this the best/newest way?
 import DashboardComponent from './components/DashboardComponent.vue'
 import ShortenLinkFormComponent from './components/ShortenLinkFormComponent.vue'
+import NavigationBar from './components/layout/NavigationBar.vue'
 
 const app = new Vue({
-  components: {
-    DashboardComponent,
-    ShortenLinkFormComponent
-  },
+    components: {
+        DashboardComponent,
+        ShortenLinkFormComponent,
+        NavigationBar
+    },
 }).$mount('#app')
