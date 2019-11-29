@@ -14,7 +14,7 @@
         </div>
         <div :class="isOpen ? 'block' : 'hidden'" class="pt-2 pb-4 sm:flex">
             <a :href="APP_URL + '/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
-            <a :href="APP_URL + '/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
+            <a :href="APP_URL + '/register'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
         </div>
     </header>
 </template>
