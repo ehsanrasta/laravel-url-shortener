@@ -18,10 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <script>
-        var base_url = '{!! url('/') !!}';
-    </script>
 </head>
 <body class="bg-gray-200">
 <div id="app">
