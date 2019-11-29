@@ -11,7 +11,7 @@
             </button>
         </div>
 
-        <!-- <shortened-links-list :previous-links="previousLinks" v-if="previousLinks.length > 0"></shortened-links-list> -->
+        <previous-link-list-component :previous-links="previousLinks" v-if="previousLinks.length > 0"></previous-link-list-component>
     </div>
 </template>
 

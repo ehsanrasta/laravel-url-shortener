@@ -1,25 +1,26 @@
 <template>
-    <ul class="list-group">
-        <li class="list-group-item d-flex flex-wrap align-items-center mb-1"
-            v-for="(link, index) in previousLinks">
+    <div class="mt-10">
+        <!-- TODO: List transisitions -->
+        <div v-for="link in previousLinks" :key="link.id" class="flex items-center justify-between w-full h-24 bg-white rounded-tr-lg rounded-bl-lg mt-5">
+            <p class="text-lg ml-20 text-purple-500 font-bold"> {{ link.original }}</p>
 
-            <span class="mr-auto">{{ link.original | truncate(40) }}</span>
-
-            <a :href="'http://short.test/' + link.short" class="mr-1" target="_blank">http://short.test/{{
-                link.short }}</a>
-
-            <button @click="copy(link.short, index)" class="btn col-sm-12 col-md-1" type="button"
-                    v-bind:class="{ 'btn-secondary': copiedIndex !== index, 'btn-success': copiedIndex === index }">
-                <span v-if="copiedIndex !== index">Copy</span>
-                <span v-if="copiedIndex === index">Copied!</span>
-            </button>
-        </li>
-    </ul>
+            <div class="ml-auto flex flex-row items-center">
+                <p class="text-purple-500">http://short.test/{{ link.short }}</p>
+                <button
+                    class="border border-2 border-purple-500 text-white text-purple-500 hover:bg-purple-500 hover:text-white py-3 px-4 ml-12 rounded-full w-full mr-20 focus:outline-none">
+                    Copy
+                </button>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
   export default {
     name: 'PreviousLinkListComponent',
+
+    // todo: implement copy
+    // todo: remove hardcoded short.test
 
     data () {
       return {
