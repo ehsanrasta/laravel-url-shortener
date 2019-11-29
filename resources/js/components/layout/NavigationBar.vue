@@ -2,7 +2,7 @@
     <header class="bg-white shadow p-3 sm:flex sm:justify-between">
         <div class="flex items-center justify-between">
             <!-- todo: make this go somewhere -->
-            <a href="#" class="text-purple-700 font-semibold subpixel-antialiased text-xl">Short.test</a>
+            <a :href="APP_URL" class="text-purple-700 font-semibold subpixel-antialiased text-xl">Short.test</a>
             <div class="sm:hidden">
                 <button @click="isOpen = !isOpen" type="button" class="block text-gray-500 hover:text-purple-700 focus:outline-none">
                     <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
@@ -13,8 +13,8 @@
             </div>
         </div>
         <div :class="isOpen ? 'block' : 'hidden'" class="pt-2 pb-4 sm:flex">
-            <a href="" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
-            <a href="" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
+            <a :href="APP_URL + '/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
+            <a :href="APP_URL + '/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
         </div>
     </header>
 </template>
@@ -25,6 +25,7 @@
 
     data() {
       return {
+        APP_URL: process.env.MIX_APP_URL,
         isOpen: false,
       }
     }
