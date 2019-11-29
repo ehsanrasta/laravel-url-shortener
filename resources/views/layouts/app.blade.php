@@ -19,14 +19,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-200">
 <div id="app">
     <navigation-bar></navigation-bar>
 
-    <main class="py-4">
-        <main role="main" class="container">
-            @yield('content')
-        </main>
+    <main role="main" class="container mx-auto mt-20">
+        @yield('content')
     </main>
 </div>
 </body>

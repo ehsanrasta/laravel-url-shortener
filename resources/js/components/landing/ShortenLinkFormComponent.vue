@@ -1,25 +1,17 @@
 <template>
     <div>
-        <div class="jumbotron mb-3">
-            <form @submit.prevent="">
-                <div class="input-group mt-3 justify-content-between">
-                    <input class="form-control col-8" id="linkInput" name="original" placeholder="Shorten your link"
-                           type="text" v-model="original">
-                    <button @click="shorten()" class="btn btn-primary col-3" type="submit">Shorten!
-                    </button>
-                </div>
-            </form>
+        <div class="flex justify-between w-full focus:outline-none border border-transparent focus-within:border-purple-500 rounded-full
+                        shadow-md focus-within:shadow-lg">
+            <input v-model="original" type="text" class="p-3 pl-5 w-10/12 z-10 text-purple-600 outline-none rounded-l-full"
+                   placeholder="Paste URL">
+            <button
+                @click="shorten()"
+                class="w-6/12 bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 z-0 -ml-5 rounded-full focus:outline-none">
+                <span class="ml-5 text-lg">Shorten</span>
+            </button>
         </div>
 
-        <transition name="slide-fade">
-            <div class="alert alert-info mb-3" role="alert" v-if="previousLinks.length > 1">
-                Like our service? <a href="/register"><b>Sign up now</b></a> and get access to <b>analytics</b>, <b>custom
-                links</b> and more!
-            </div>
-        </transition>
-
-        <previous-link-list-component :previous-links="previousLinks"
-                                      v-if="previousLinks.length > 0"></previous-link-list-component>
+        <!-- <shortened-links-list :previous-links="previousLinks" v-if="previousLinks.length > 0"></shortened-links-list> -->
     </div>
 </template>
 
@@ -43,6 +35,7 @@
     methods: {
       async shorten () {
         let link = {
+          id: Math.floor(Math.random() * 50), // todo: this is wrong
           original: this.original
         }
 
