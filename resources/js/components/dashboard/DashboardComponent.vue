@@ -6,6 +6,11 @@
             <stat-counter :icon="'fa-heart'" :fg-color="'text-green-500'" :bg-color="'bg-green-100'"></stat-counter>
             <!-- todo selectedLink -->
         </div>
+
+        <div class="container mx-auto shadow bg-white rounded p-5">
+            <link-chart-component :height="100" :chart-data="[45, 34, 56, 34, 78, 23, 56, 17, 15, 90, 12, 67]"></link-chart-component>
+            <!-- todo selectedLink -->
+        </div>
     </div>
 </template>
 
@@ -13,11 +18,12 @@
   import StatCounter from './StatCounter.vue'
 
   import LinksClient from '../../api/links'
+  import LinkChartComponent from './LinkChartComponent'
 
   export default {
     name: 'DashboardComponent',
 
-    components: {StatCounter},
+    components: {LinkChartComponent, StatCounter},
 
     data () {
       return {

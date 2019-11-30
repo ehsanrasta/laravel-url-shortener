@@ -4,18 +4,9 @@
   export default {
     name: 'LinkChartComponent',
 
-    props: ['link'],
+    props: ['chartData'],
 
     extends: Line,
-
-    computed: {
-      chartData: function () {
-        if (this.link) {
-          return this.link.clicksByMonth
-        }
-        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      }
-    },
 
     mounted () {
       this.renderAreaChart()
@@ -28,8 +19,8 @@
           datasets:
             [{
               data: this.chartData,
-              backgroundColor: 'rgba(52, 144, 220, 0.3)',
-              borderColor: 'rgba(52, 144, 220, 1)',
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              borderColor: 'rgba(107, 70, 193, 1)',
             }]
         }
 
@@ -48,7 +39,7 @@
 
           responsive: true,
 
-          maintainAspectRatio: false,
+          maintainAspectRatio: true,
         }
 
         this.renderChart(data, options)
