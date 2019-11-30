@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white shadow p-3 sm:flex sm:justify-between">
+    <header class="bg-white shadow p-2 sm:flex sm:justify-between">
         <div class="flex items-center justify-between">
             <!-- todo: make this go somewhere -->
             <a :href="APP_URL" class="text-purple-700 font-semibold subpixel-antialiased text-xl">Short.test</a>
