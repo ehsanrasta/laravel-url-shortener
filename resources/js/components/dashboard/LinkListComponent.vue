@@ -1,56 +1,53 @@
 <template>
-    <div class="mb-3">
-        <div class="d-flex justify-content-between">
-            <p class="form-text text-muted py-0 my-0">{{ links.length }} links</p>
-            <p class="form-text text-muted py-0 my-0">Clicks all time</p>
-        </div>
-
-        <ul class="list-group overflow-auto" style="max-height: 300px">
-            <li :class="{ 'active' : isSelected(index) }"
-                @click="setSelected(link, index)"
-                class="d-flex align-items-start flex-column list-group-item list-group-item-action" href="#some-link"
-                style="cursor: pointer;"
-                v-for="(link, index) in links">
-                <small class="d-flex w-100 text-uppercase">{{ link.created_at | momentDay }}</small>
-                <h5>{{ link.original | truncate(30) }}</h5>
-                <div class="d-flex w-100 justify-content-between">
-                    <small>short.test/<b>{{ link.short }}</b></small>
-                    <span>{{ link.totalClicks }} <i class="far fa-chart-bar"></i></span>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <table class="w-full">
+        <thead>
+        <tr class="uppercase text-gray-600 text-sm">
+            <th class="text-left sm:w-1/3 md:w-1/4 pb-5">Original</th>
+            <th class="text-left sm:w-1/3 md:w-1/4 pb-5">Short</th>
+            <th class="text-left sm:w-1/3 md:w-1/4 pb-5">Clicks</th>
+            <th class="text-left sm:w-1/3 md:w-1/4 pb-5 hidden md:block whitespace-no-wrap">Created at</th>
+            <th class="text-right sm:w-1/3 pb-5"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(link, index) in links" class="text-gray-700" :class="{ 'text-purple-700' : isSelected(index) }">
+            <td class="font-semibold subpixel-antialiased py-5">{{ link.original }}</td>
+            <td>{{ link.short }}</td>
+            <td>{{ link.clicks }}</td>
+            <td class="hidden md:inline-block py-5 whitespace-no-wrap">{{ link.createdAt }}</td>
+            <td class="text-right">
+                <i class="far fa-eye inline cursor-pointer" @click="setSelected(link, index)"></i>
+                <i class="far fa-file inline ml-5 cursor-pointer"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
   export default {
-    name: 'LinkListComponent',
-
-    props: ['links'],
-
+    name: 'LinksListComponent',
     data () {
       return {
-        selectedIndex: undefined,
-        selectedLink: undefined,
+        selectedIndex: null,
+        selectedLink: null,
+        links: [
+          {original: 'facebook.com', short: 'short.test/32r234', clicks: 456, createdAt: 'Oct. 9th, 2019'},
+          {original: 'google.com', short: 'short.test/43tg4', clicks: 245, createdAt: 'Oct. 12th, 2017'}
+        ],
       }
     },
-
     methods: {
-      setSelected (link, index) {
+      setSelected(link, index) {
         this.selectedLink = link
-
         this.selectedIndex = index
-
-        this.$emit('input', link)
       },
-
-      isSelected (index) {
+      isSelected(index) {
         return index === this.selectedIndex
       }
-    },
+    }
   }
 </script>
 
 <style scoped>
-
 </style>

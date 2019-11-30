@@ -11,6 +11,11 @@
             <link-chart-component :height="100" :chart-data="[45, 34, 56, 34, 78, 23, 56, 17, 15, 90, 12, 67]"></link-chart-component>
             <!-- todo selectedLink -->
         </div>
+
+        <div class="container mt-10 mx-auto shadow bg-white rounded p-5">
+            <link-list-component></link-list-component>
+            <!-- todo selectedLink -->
+        </div>
     </div>
 </template>
 
@@ -19,11 +24,12 @@
 
   import LinksClient from '../../api/links'
   import LinkChartComponent from './LinkChartComponent'
+  import LinkListComponent from './LinkListComponent'
 
   export default {
     name: 'DashboardComponent',
 
-    components: {LinkChartComponent, StatCounter},
+    components: {LinkListComponent, LinkChartComponent, StatCounter},
 
     data () {
       return {
