@@ -13,7 +13,7 @@
         </div>
 
         <div class="container mt-10 mx-auto shadow bg-white rounded p-5">
-            <link-list-component></link-list-component>
+            <link-list-component :links="links"></link-list-component>
             <!-- todo selectedLink -->
         </div>
     </div>

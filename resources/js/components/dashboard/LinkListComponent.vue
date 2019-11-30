@@ -27,14 +27,13 @@
 <script>
   export default {
     name: 'LinksListComponent',
+
+    props: ['links'],
+
     data () {
       return {
         selectedIndex: null,
         selectedLink: null,
-        links: [
-          {original: 'facebook.com', short: 'short.test/32r234', clicks: 456, createdAt: 'Oct. 9th, 2019'},
-          {original: 'google.com', short: 'short.test/43tg4', clicks: 245, createdAt: 'Oct. 12th, 2017'}
-        ],
       }
     },
     methods: {
