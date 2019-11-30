@@ -4,7 +4,7 @@
   export default {
     name: 'LinkChartComponent',
 
-    props: ['chartData'],
+    props: ['chartData', 'chartLabels'],
 
     extends: Line,
 
@@ -15,7 +15,7 @@
     methods: {
       renderAreaChart () {
         let data = {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          labels: this.chartLabels,
           datasets:
             [{
               data: this.chartData,

@@ -8,12 +8,12 @@
         </div>
 
         <div class="container mx-auto shadow bg-white rounded p-5">
-            <link-chart-component :height="100" :chart-data="[45, 34, 56, 34, 78, 23, 56, 17, 15, 90, 12, 67]"></link-chart-component>
+            <link-chart-component :height="100" :chart-data="clicksByMonth" :chart-labels="chartLabels"></link-chart-component>
             <!-- todo selectedLink -->
         </div>
 
         <div class="container mt-10 mx-auto shadow bg-white rounded p-5">
-            <link-list-component :links="links"></link-list-component>
+            <link-list-component :links="links" v-model="selectedLink"></link-list-component>
             <!-- todo selectedLink -->
         </div>
     </div>
@@ -33,9 +33,21 @@
 
     data () {
       return {
-        selectedLink: undefined,
+        selectedLink: null,
+
+        chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
         links: [],
+      }
+    },
+
+    computed: {
+      clicksByMonth () {
+        if (this.selectedLink !== null) {
+          return this.selectedLink.clicksByMonth
+        }
+
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       }
     },
 

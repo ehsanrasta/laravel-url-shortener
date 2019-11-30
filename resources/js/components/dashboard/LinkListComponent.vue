@@ -11,10 +11,10 @@
         </thead>
         <tbody>
         <tr v-for="(link, index) in links" class="text-gray-700" :class="{ 'text-purple-700' : isSelected(index) }">
-            <td class="font-semibold subpixel-antialiased py-5">{{ link.original }}</td>
-            <td>{{ link.short }}</td>
-            <td>{{ link.clicks }}</td>
-            <td class="hidden md:inline-block py-5 whitespace-no-wrap">{{ link.createdAt }}</td>
+            <td class="font-semibold subpixel-antialiased py-5">{{ link.original | truncate(30) }}</td>
+            <td>{{ APP_URL }}/{{ link.short }}</td>
+            <td>{{ link.totalClicks }}</td>
+            <td class="hidden md:inline-block py-5 whitespace-no-wrap">{{ link.created_at | momentDay }}</td>
             <td class="text-right">
                 <i class="far fa-eye inline cursor-pointer" @click="setSelected(link, index)"></i>
                 <i class="far fa-file inline ml-5 cursor-pointer"></i>
@@ -32,6 +32,7 @@
 
     data () {
       return {
+        APP_URL: process.env.MIX_APP_URL,
         selectedIndex: null,
         selectedLink: null,
       }
@@ -40,6 +41,7 @@
       setSelected(link, index) {
         this.selectedLink = link
         this.selectedIndex = index
+        this.$emit('input', link)
       },
       isSelected(index) {
         return index === this.selectedIndex
