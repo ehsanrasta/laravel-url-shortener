@@ -1,33 +1,23 @@
 <template>
     <div>
-        <div class="row mb-5">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <link-chart-component :link="selectedLink"></link-chart-component>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-between">
-            <div class="col-sm-12 col-md-5">
-                <link-list-component :links="links" v-model="selectedLink"></link-list-component>
-            </div>
+        <div class="container mx-auto pt-20 flex md:flex-row sm:justify-between flex-wrap cursor-default">
+            <stat-counter :icon="'fa-users'" :fg-color="'text-blue-500'" :bg-color="'bg-blue-100'"></stat-counter>
+            <stat-counter :icon="'fa-bullseye'" :fg-color="'text-purple-500'" :bg-color="'bg-purple-100'"></stat-counter>
+            <stat-counter :icon="'fa-heart'" :fg-color="'text-green-500'" :bg-color="'bg-green-100'"></stat-counter>
+            <!-- todo selectedLink -->
         </div>
     </div>
 </template>
 
 <script>
-  import LinkChartComponent from './LinkChartComponent.vue'
-  import LinkListComponent from './LinkListComponent.vue'
+  import StatCounter from './StatCounter.vue'
 
   import LinksClient from '../../api/links'
 
   export default {
     name: 'DashboardComponent',
 
-    components: {LinkChartComponent, LinkListComponent},
+    components: {StatCounter},
 
     data () {
       return {

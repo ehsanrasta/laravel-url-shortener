@@ -41,6 +41,7 @@ class LinksController extends Controller
         return view('links.create');
     }
 
+    // TODO: This is more like a CreateShortLinkRequest
     public function store(StoreShortLink $request)
     {
         $data = $request->validated();

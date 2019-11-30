@@ -42,14 +42,22 @@ Vue.filter('momentDayYear', function (text) {
 })
 
 // TODO: Is this the best/newest way?
-import DashboardComponent from './components/dashboard/DashboardComponent.vue'
-import ShortenLinkFormComponent from './components/landing/ShortenLinkFormComponent.vue'
+
+// Layout components
 import NavigationBar from './components/layout/NavigationBar.vue'
+
+// Dashboard components
+import DashboardComponent from './components/dashboard/DashboardComponent.vue'
+import StatCounter from './components/dashboard/StatCounter.vue'
+
+// Landing page components
+import ShortenLinkFormComponent from './components/landing/ShortenLinkFormComponent.vue'
 
 const app = new Vue({
     components: {
+        NavigationBar,
         DashboardComponent,
+        StatCounter,
         ShortenLinkFormComponent,
-        NavigationBar
     },
 }).$mount('#app')
