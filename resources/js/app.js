@@ -53,11 +53,15 @@ import StatCounter from './components/dashboard/StatCounter.vue'
 // Landing page components
 import ShortenLinkFormComponent from './components/landing/ShortenLinkFormComponent.vue'
 
+// Login page components
+import LoginForm from './components/auth/LoginForm.vue'
+
 const app = new Vue({
     components: {
         NavigationBar,
         DashboardComponent,
         StatCounter,
         ShortenLinkFormComponent,
+        LoginForm,
     },
 }).$mount('#app')

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container mx-auto pt-10 flex md:flex-row sm:justify-between flex-wrap cursor-default">
+        <div class="container mx-auto flex md:flex-row sm:justify-between flex-wrap cursor-default">
             <stat-counter :icon="'fa-users'" :fg-color="'text-blue-500'" :bg-color="'bg-blue-100'"></stat-counter>
             <stat-counter :icon="'fa-bullseye'" :fg-color="'text-purple-500'" :bg-color="'bg-purple-100'"></stat-counter>
             <stat-counter :icon="'fa-heart'" :fg-color="'text-green-500'" :bg-color="'bg-green-100'"></stat-counter>
