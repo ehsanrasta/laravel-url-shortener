@@ -1,7 +1,7 @@
 <template>
     <div class="mt-10">
         <!-- TODO: List transisitions -->
-        <div v-for="link in previousLinks" :key="link.id" class="flex items-center justify-between w-full h-24 bg-white rounded-tr-lg rounded-bl-lg mt-5">
+        <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 bg-white rounded-tr-lg rounded-bl-lg mt-5">
             <p class="text-lg ml-20 text-purple-500 font-bold">{{ link.original }}</p>
 
             <div class="ml-auto flex flex-row items-center">
@@ -54,5 +54,6 @@
 </script>
 
 <style scoped>
-
+    .grow { transition: all .2s ease-in-out; }
+    .grow:hover { transform: scale(1.05); }
 </style>
