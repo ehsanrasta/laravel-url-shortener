@@ -56,6 +56,9 @@ import ShortenLinkFormComponent from './components/landing/ShortenLinkFormCompon
 // Login page components
 import LoginForm from './components/auth/LoginForm.vue'
 
+// Register page components
+import RegisterForm from './components/auth/RegisterForm'
+
 const app = new Vue({
     components: {
         NavigationBar,
@@ -63,5 +66,6 @@ const app = new Vue({
         StatCounter,
         ShortenLinkFormComponent,
         LoginForm,
+        RegisterForm,
     },
 }).$mount('#app')
