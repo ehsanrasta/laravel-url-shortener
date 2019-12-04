@@ -1,13 +1,13 @@
 <template>
     <div class="mt-10">
         <!-- TODO: List transisitions -->
-        <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 bg-white rounded-tr-lg rounded-bl-lg mt-5">
-            <p class="text-lg ml-20 text-purple-500 font-bold">{{ link.original }}</p>
+        <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 rounded bg-white mt-5">
+            <p class="ml-20 text-purple-500 font-bold">{{ link.original }}</p>
 
             <div class="ml-auto flex flex-row items-center">
                 <p class="text-purple-500">{{ APP_URL }}/{{ link.short }}</p>
                 <button
-                    class="border border-2 border-purple-500 text-white text-purple-500 hover:bg-purple-500 hover:text-white py-3 px-4 ml-12 rounded-full w-full mr-20 focus:outline-none">
+                    class="border border-4 bg-white border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 py-3 px-4 ml-12 rounded-full w-full mr-20 focus:outline-none">
                     Copy
                 </button>
             </div>
