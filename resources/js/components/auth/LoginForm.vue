@@ -1,6 +1,6 @@
 <template>
     <div class="container flex">
-        <form action="/login" method="POST" class="sm:w-2/3 md:w-2/3 lg:w-1/3 bg-white mx-auto shadow rounded px-8 pt-6 pb-8 mb-4">
+        <form action="/login" method="POST" class="max-w-sm w-full md:max-w-md bg-white mx-auto shadow rounded px-8 pt-6 pb-8 mb-4">
             <input type="hidden" name="_token" :value="csrfToken">
 
             <h1 class="text-lg text-center text-gray-700 font-semibold subpixel-antialiased mb-4">Welcome Back!</h1>
