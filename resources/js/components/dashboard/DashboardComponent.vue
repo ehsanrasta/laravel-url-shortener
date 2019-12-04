@@ -12,8 +12,8 @@
             <!-- todo selectedLink -->
         </div>
 
-        <div class="container mt-10 mx-auto shadow bg-white rounded p-5">
-            <link-list-component :links="links" v-model="selectedLink"></link-list-component>
+        <div class="container overflow-x-auto mt-10 shadow rounded bg-white">
+            <link-list-component v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list-component>
             <!-- todo selectedLink -->
         </div>
     </div>
