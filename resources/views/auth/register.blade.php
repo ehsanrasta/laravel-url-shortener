@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <register-form></register-form>
+    <register-form :errors="{{ $errors }}"></register-form>
 @endsection

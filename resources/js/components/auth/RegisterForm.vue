@@ -9,28 +9,40 @@
                     font-bold mb-2">
                     Username
                 </label>
-                <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <input required type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <small v-if="errors.username" class="text-red-800 font-semibold">
+                    {{ errors.username[0] }}
+                </small>
             </div>
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-sm
                     font-bold mb-2">
                     Email
                 </label>
-                <input type="text" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <input required type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <small v-if="errors.email" class="text-red-800 font-semibold">
+                    {{ errors.email[0] }}
+                </small>
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 text-sm
                     font-bold mb-2">
                     Password
                 </label>
-                <input type="text" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <input required type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <small v-if="errors.password && errors.password[0] !== 'The password confirmation does not match.'" class="text-red-800 font-semibold">
+                    {{ errors.password[0] }}
+                </small>
             </div>
             <div class="mb-6">
                 <label for="password" class="block text-gray-700 text-sm
                     font-bold mb-2">
                     Confirm Password
                 </label>
-                <input type="text" id="password-confirm" name="password_confirmation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <input required type="password" id="password-confirm" name="password_confirmation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray">
+                <small v-if="errors.password && errors.password[0] === 'The password confirmation does not match.'" class="text-red-800 font-semibold">
+                    {{ errors.password[0] }}
+                </small>
             </div>
 
             <div class="flex items-center">
@@ -46,6 +58,8 @@
 <script>
   export default {
     name: 'RegisterForm',
+
+    props: ['errors'],
 
     data () {
       return {
