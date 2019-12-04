@@ -6,7 +6,7 @@
             <th class="text-left py-3 px-1">Short</th>
             <th class="text-right py-3 px-1">Clicks</th>
             <th class="text-right py-3 px-1">Created at</th>
-            <th class="text-right py-3 px-8">View / Copy</th>
+            <th class="text-center py-3 px-1">View / Copy</th>
         </tr>
         </thead>
         <tbody>
@@ -15,7 +15,7 @@
             <td class="py-3 px-1">{{ APP_URL }}/{{ link.short }}</td>
             <td class="text-right py-3 px-1">{{ link.totalClicks }}</td>
             <td class="text-right py-3 px-1">{{ link.created_at | momentDay }}</td>
-            <td class="text-right py-3 px-16">
+            <td class="text-center py-3 px-1">
                 <i class="far fa-eye inline cursor-pointer" @click="setSelected(link, index)"></i>
                 <i class="far fa-file inline ml-5 cursor-pointer"></i>
             </td>
