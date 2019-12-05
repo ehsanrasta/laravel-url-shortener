@@ -34,9 +34,11 @@
 
     methods: {
       async shorten () {
+        let originalCopy = this.addProtocolToLink(this.original)
+
         let link = {
           id: Math.floor(Math.random() * 50), // todo: this is wrong
-          original: this.original
+          original: originalCopy
         }
 
         await linksClient.shorten(link).then((response) => {
@@ -64,6 +66,14 @@
         }
 
         this.previousLinks.unshift(link)
+      },
+
+      addProtocolToLink (link) {
+        if (link.substring(0, 8) !== 'https://' && link.substring(0, 7) !== 'http://') {
+          link = 'https://' + this.original
+        }
+
+        return link
       }
     },
   }

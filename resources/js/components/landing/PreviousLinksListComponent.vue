@@ -2,10 +2,10 @@
     <div class="mt-10">
         <!-- TODO: List transisitions -->
         <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 rounded bg-white mt-5">
-            <p class="ml-20 text-purple-500 font-bold">{{ link.original }}</p>
+            <a :href="link.original" class="ml-20 text-purple-500 font-bold">{{ link.original }}</a>
 
             <div class="ml-auto flex flex-row items-center">
-                <p class="text-purple-500">{{ APP_URL }}/{{ link.short }}</p>
+                <a :href="'/' + link.short" class="text-purple-500">{{ APP_URL }}/{{ link.short }}</a>
                 <button
                     class="border border-4 bg-white border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 py-3 px-4 ml-12 rounded-full w-full mr-20 focus:outline-none">
                     Copy
