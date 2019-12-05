@@ -29,7 +29,11 @@
 
         <div class="container overflow-x-auto mt-10 shadow rounded bg-white">
             <link-list-component v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list-component>
-            <!-- todo selectedLink -->
+            <div v-if="links.length === 0" class="text-center justify-center p-24">
+                <p class="font-semibold text-gray-600">
+                    Hey! There's nothing here... <a href="/" class="text-blue-500 underline">start by adding some links.</a>
+                </p>
+            </div>
         </div>
     </div>
 </template>
