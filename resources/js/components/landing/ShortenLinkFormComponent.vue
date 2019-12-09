@@ -36,35 +36,27 @@
 
     methods: {
       async shorten () {
-        let originalCopy = this.addProtocolToLink(this.original)
-
-        let link = {
+        const link = {
           id: Math.floor(Math.random() * 50), // todo: this is wrong
-          original: originalCopy
+          original: this.addProtocolToLink(this.original)
         }
 
-        await linksClient.shorten(link).then((response) => {
+        try {
+          const response = await linksClient.shorten(link)
           this.original = ''
-
-          let {
-            id,
-            original,
-            short
-          } = response.data
-
-          this.addToPreviousLinks({id, original, short})
-        }).catch((error) => {
+          this.addToPreviousLinks(response.data)
+        } catch (error) {
           this.$swal({
             type: 'error',
             title: 'Oops...',
             text: 'Please check your link and try again.',
           })
-        })
+        }
       },
 
       addToPreviousLinks (link) {
         if (this.previousLinks.length >= 3) {
-          let removed = this.previousLinks.splice(-1)
+          this.previousLinks.splice(-1)
         }
 
         this.previousLinks.unshift(link)
