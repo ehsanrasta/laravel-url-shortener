@@ -1,7 +1,6 @@
 <template>
-    <header class="bg-white shadow p-2 sm:flex sm:justify-between">
-        <div class="flex items-baseline justify-between">
-            <!-- todo: make this go somewhere -->
+    <header class="bg-white shadow p-2 sm:flex sm:justify-between items-baseline align-baseline">
+        <div class="flex justify-between">
             <a :href="'/'" class="text-purple-700 font-semibold subpixel-antialiased text-xl">Short.test</a>
             <div class="sm:hidden">
                 <button @click="isOpen = !isOpen" type="button" class="block text-gray-500 hover:text-purple-700 focus:outline-none">
@@ -13,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div :class="isOpen ? 'inline-block' : 'hidden'" class="pt-2 pb-4 sm:flex items-center">
+        <div :class="isOpen ? 'inline-block' : 'hidden'" class="pt-2 pb-4 sm:flex items-baseline">
             <a v-if="!this.user" :href="'/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
             <a v-if="!this.user" :href="'/register'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
             <a v-if="this.user" :href="'/home'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Home</a>
