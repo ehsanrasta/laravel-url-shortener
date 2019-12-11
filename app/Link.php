@@ -28,12 +28,13 @@ class Link extends Model
 
     public static function getLinkInstanceOrNull($short)
     {
+        $link = null;
+
         // Check if it's a hashid's generated short link
-        if (!isset($link) && sizeof(app()->encoder->decode($short)) > 0) {
+        if (count(app()->encoder->decode($short)) > 0) {
             $link = Link::where('id', app()->encoder->decode($short)[0])->first();
         }
 
-        // TODO: What if no link is found?
         return $link;
     }
 
@@ -44,7 +45,7 @@ class Link extends Model
             'created_at' => $date,
         ]);
 
-        //TODO: Job queue instead
+        //TODO: Job queue instead, faster redirection
     }
 
     public function clicks()
@@ -54,7 +55,7 @@ class Link extends Model
 
     public function getClicksByMonthAttribute()
     {
-        $clicksByMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $clicksByMonth = array_fill(0, 12, 0);
 
         if (count($this->clicks) === 0) {
             return $clicksByMonth;
@@ -74,7 +75,7 @@ class Link extends Model
         });
     }
 
-    function getShortAttribute()
+    public function getShortAttribute()
     {
         return app()->encoder->encode($this->id);
     }
