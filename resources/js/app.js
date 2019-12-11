@@ -41,8 +41,6 @@ Vue.filter('momentDayYear', function (text) {
     return moment(text).format('MMMM Do YYYY')
 })
 
-// TODO: Is this the best/newest way?
-
 // Layout components
 import NavigationBar from './components/layout/NavigationBar.vue'
 

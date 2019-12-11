@@ -19,12 +19,10 @@
                 :bg-color="'bg-green-100'"
                 :value="this.selectedLink.totalClicks"
                 :description="'Total Reach'"></stat-counter>
-            <!-- todo selectedLink -->
         </div>
 
         <div class="container mx-auto shadow bg-white rounded p-5">
             <link-chart-component :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart-component>
-            <!-- todo selectedLink -->
         </div>
 
         <div class="container overflow-x-auto mt-10 shadow rounded bg-white">

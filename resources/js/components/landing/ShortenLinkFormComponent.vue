@@ -37,7 +37,6 @@
     methods: {
       async shorten () {
         const link = {
-          id: Math.floor(Math.random() * 50), // todo: this is wrong
           original: this.addProtocolToLink(this.original)
         }
 

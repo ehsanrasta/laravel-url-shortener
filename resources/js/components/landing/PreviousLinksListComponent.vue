@@ -1,6 +1,5 @@
 <template>
     <div class="mt-10">
-        <!-- TODO: List transisitions -->
         <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 rounded bg-white mt-5">
             <a :href="link.original" class="ml-20 text-purple-500 font-bold hover:underline">{{ link.original }}</a>
 
@@ -18,8 +17,6 @@
 <script>
   export default {
     name: 'PreviousLinkListComponent',
-
-    // todo: implement copy
 
     data () {
       return {
