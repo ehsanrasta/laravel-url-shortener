@@ -6,9 +6,7 @@ use App\Http\Requests\ShowShortLink;
 use App\Http\Requests\StoreShortLink;
 use App\Link;
 use Carbon\Carbon;
-use DB;
 use App\Http\Resources\Link as LinkResource;
-use Illuminate\Http\Request;
 
 class LinksController extends Controller
 {
@@ -54,9 +52,7 @@ class LinksController extends Controller
             return collect();
         }
 
-        $links = auth()->user()->links()->get();
-
-        return $links;
+        return auth()->user()->links;
     }
 
     private function createLinkForUserOrGuest($data)
