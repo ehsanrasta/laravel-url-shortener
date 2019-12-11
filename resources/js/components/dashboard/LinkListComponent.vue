@@ -16,7 +16,7 @@
             <td class="text-right py-3 px-1">{{ link.totalClicks }}</td>
             <td class="text-right py-3 px-1">{{ link.created_at | momentDay }}</td>
             <td class="text-center py-3 px-1">
-                <i class="far fa-eye inline cursor-pointer" @click="setSelected(link, index)"></i>
+                <i class="far fa-eye inline cursor-pointer" @click="setSelected(index)"></i>
                 <i class="far fa-file inline ml-5 cursor-pointer"></i>
             </td>
         </tr>
@@ -34,15 +34,13 @@
       return {
         APP_URL: process.env.MIX_APP_URL,
         selectedIndex: null,
-        selectedLink: null,
       }
     },
 
     methods: {
-      setSelected (link, index) {
-        this.selectedLink = link
+      setSelected (index) {
         this.selectedIndex = index
-        this.$emit('input', link)
+        this.$emit('input', this.links[index])
       },
       isSelected (index) {
         return index === this.selectedIndex
@@ -50,7 +48,7 @@
     },
 
     mounted () {
-      this.setSelected(this.links[0], 0)
+      this.setSelected(0)
     }
   }
 </script>
