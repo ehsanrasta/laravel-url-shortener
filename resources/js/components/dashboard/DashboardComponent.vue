@@ -63,17 +63,18 @@
     async mounted () {
       let vm = this
 
-      await LinksClient.getAllLinksForUser().then((response) => {
-        response.data.forEach(function (element) {
-          vm.links.push(element)
+      try {
+        const response = await LinksClient.getAllLinksForUser()
+        response.data.forEach(function (link) {
+          vm.links.push(link)
         })
-      }).catch((error) => {
+      } catch (error) {
         this.$swal({
           type: 'error',
           title: 'Oops...',
           text: 'There was an error loading your past links.',
         })
-      })
+      }
     },
   }
 </script>
