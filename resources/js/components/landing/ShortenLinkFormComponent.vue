@@ -64,7 +64,7 @@
 
       addProtocolToLink (link) {
         if (link.substring(0, 8) !== 'https://' && link.substring(0, 7) !== 'http://') {
-          link = 'https://' + this.original
+          link = 'https://' + link
         }
 
         return link
