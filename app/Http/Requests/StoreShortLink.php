@@ -13,7 +13,6 @@ class StoreShortLink extends FormRequest
      */
     public function authorize()
     {
-        // todo: auth
         return true;
     }
 

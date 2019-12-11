@@ -16,24 +16,7 @@ class LinksController extends Controller
     {
         $links = $this->getLinksForUserOrGuest();
 
-        if (request()->wantsJson()) {
-            return $links->toJson();
-        }
-
-        /**
-         * TODO: Do something when the request does not want JSON.
-         */
-    }
-
-    private function getLinksForUserOrGuest()
-    {
-        if (auth()->guest()) {
-            return collect();
-        }
-
-        $links = auth()->user()->links()->get();
-
-        return $links;
+        return response()->json($links);
     }
 
     public function create()
@@ -41,7 +24,6 @@ class LinksController extends Controller
         return view('links.create');
     }
 
-    // TODO: This is more like a CreateShortLinkRequest
     public function store(StoreShortLink $request)
     {
         $data = $request->validated();
@@ -49,15 +31,6 @@ class LinksController extends Controller
         $link = $this->createLinkForUserOrGuest($data);
 
         return response()->json(new LinkResource($link));
-    }
-
-    private function createLinkForUserOrGuest($data)
-    {
-        if (auth()->guest()) {
-            return Link::create($data);
-        }
-
-        return auth()->user()->links()->create($data);
     }
 
     public function show(ShowShortLink $request, $short)
@@ -73,5 +46,25 @@ class LinksController extends Controller
         $link->addClick(Carbon::now());
 
         return redirect()->to($link->original);
+    }
+
+    private function getLinksForUserOrGuest()
+    {
+        if (auth()->guest()) {
+            return collect();
+        }
+
+        $links = auth()->user()->links()->get();
+
+        return $links;
+    }
+
+    private function createLinkForUserOrGuest($data)
+    {
+        if (auth()->guest()) {
+            return Link::create($data);
+        }
+
+        return auth()->user()->links()->create($data);
     }
 }
