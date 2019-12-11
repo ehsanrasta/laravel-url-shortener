@@ -31,15 +31,9 @@ class LinksController extends Controller
         return response()->json(new LinkResource($link));
     }
 
-    public function show(ShowShortLink $request, $short)
+    public function show(ShowShortLink $request, Link $link)
     {
         $data = $request->validated();
-
-        $link = Link::getLinkInstanceOrNull($request->short);
-
-        if (!isset($link)) {
-            abort(404);
-        }
 
         $link->addClick(Carbon::now());
 

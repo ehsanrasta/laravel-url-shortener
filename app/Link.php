@@ -26,16 +26,15 @@ class Link extends Model
         'totalClicks',
     ];
 
-    public static function getLinkInstanceOrNull($short)
+    public function resolveRouteBinding($value)
     {
-        $link = null;
-
-        // Check if it's a hashid's generated short link
-        if (count(app()->encoder->decode($short)) > 0) {
-            $link = Link::where('id', app()->encoder->decode($short)[0])->first();
+        // Check if it's a hashid encoded short link
+        if (count(app()->encoder->decode($value)) > 0) {
+            $decodedId = app()->encoder->decode($value)[0];
+            return $this->where('id', $decodedId)->first();
         }
 
-        return $link;
+        abort(404);
     }
 
     public function addClick($date)

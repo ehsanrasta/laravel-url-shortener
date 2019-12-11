@@ -29,5 +29,5 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/links', 'LinksController@index');
 });
 
-Route::get('/{short}', 'LinksController@show');
+Route::get('/{link}', 'LinksController@show');
 
