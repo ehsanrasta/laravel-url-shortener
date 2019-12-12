@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div :class="isOpen ? 'inline-block' : 'hidden'" class="sm:flex">
+        <div :class="isOpen ? 'inline-block' : 'hidden'" class="sm:flex mt-3">
             <a v-if="!this.user" :href="'/login'" class="block hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
             <a v-if="!this.user" :href="'/register'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
             <a v-if="this.user" :href="'/home'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Home</a>
