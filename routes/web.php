@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/links/create');
-});
+Route::get('/', 'LinksController@create');
 
 Auth::routes([
     'reset' => false,
