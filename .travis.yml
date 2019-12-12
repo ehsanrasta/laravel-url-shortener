@@ -14,5 +14,8 @@ before_script:
 before_install:
   - mysql -e 'CREATE DATABASE laravel-url-shortener-testing;'
 
+services:
+  - mysql
+
 script:
   - vendor/bin/phpunit
