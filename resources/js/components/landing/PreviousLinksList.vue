@@ -1,12 +1,12 @@
 <template>
     <div class="mt-10">
-        <div v-for="link in previousLinks" :key="link.id" class="grow flex items-center justify-between w-2/3 mx-auto h-24 rounded bg-white mt-5">
-            <a :href="link.original" class="ml-20 text-purple-500 font-bold hover:underline">{{ link.original }}</a>
+        <div v-for="link in previousLinks" :key="link.id" class="flex flex-col md:flex-row md:items-center md:justify-between w-2/3 mx-auto rounded bg-white mt-5 p-4">
+            <a :href="link.original" class="text-purple-500 hover:underline">{{ link.original | truncate(30) }}</a>
 
-            <div class="ml-auto flex flex-row items-center">
-                <a :href="'/' + link.short" class="text-purple-500 hover:underline">{{ APP_URL }}/{{ link.short }}</a>
+            <div class="flex flex-col md:w-1/2 md:flex-row md:items-center md:justify-end">
+                <a :href="'/' + link.short" class="mt-5 md:mt-0 font-bold text-purple-500 hover:underline">{{ APP_URL }}/{{ link.short }}</a>
                 <button
-                    class="border border-4 bg-white border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 py-3 px-4 ml-12 rounded-full w-full mr-20 focus:outline-none">
+                    class="mt-5 md:mt-0 md:w-1/3 md:ml-3 w-full py-2 px-4 border bg-white border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 rounded-full focus:outline-none">
                     Copy
                 </button>
             </div>
