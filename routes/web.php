@@ -15,7 +15,10 @@ Route::get('/', function () {
     return redirect('/links/create');
 });
 
-Auth::routes();
+Auth::routes([
+    'reset' => false,
+    'verify' => false,
+]);
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
