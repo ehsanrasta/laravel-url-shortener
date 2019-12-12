@@ -22,11 +22,11 @@
         </div>
 
         <div class="container mx-auto shadow bg-white rounded p-5">
-            <link-chart-component :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart-component>
+            <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
         <div class="container overflow-x-auto mt-10 shadow rounded bg-white">
-            <link-list-component v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list-component>
+            <link-list v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list>
             <div v-if="links.length === 0" class="text-center justify-center p-24">
                 <p class="font-semibold text-gray-600">
                     Hey! There's nothing here... <a href="/" class="text-blue-500 underline">start by adding some links.</a>
@@ -40,13 +40,13 @@
   import StatCounter from './StatCounter.vue'
 
   import LinksClient from '../../api/links'
-  import LinkChartComponent from './LinkChartComponent'
-  import LinkListComponent from './LinkListComponent'
+  import LinkChart from './LinkChart'
+  import LinkList from './LinkList'
 
   export default {
-    name: 'DashboardComponent',
+    name: 'Dashboard',
 
-    components: {LinkListComponent, LinkChartComponent, StatCounter},
+    components: {LinkList, LinkChart, StatCounter},
 
     data () {
       return {

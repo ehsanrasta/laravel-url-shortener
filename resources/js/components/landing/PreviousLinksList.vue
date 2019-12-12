@@ -16,7 +16,7 @@
 
 <script>
   export default {
-    name: 'PreviousLinkListComponent',
+    name: 'PreviousLinksList',
 
     data () {
       return {

@@ -13,18 +13,20 @@
             </button>
         </div>
 
-        <previous-link-list-component :previous-links="previousLinks" v-if="previousLinks.length > 0"></previous-link-list-component>
+        <previous-links-list :previous-links="previousLinks" v-if="previousLinks.length > 0"></previous-links-list>
     </div>
 </template>
 
 <script>
   import linksClient from '../../api/links'
 
-  import PreviousLinkListComponent from './PreviousLinksListComponent.vue'
+  import PreviousLinksList from './PreviousLinksList.vue'
 
   export default {
+    name: 'ShortenLinkForm',
+
     components: {
-      PreviousLinkListComponent,
+      PreviousLinksList,
     },
 
     data () {

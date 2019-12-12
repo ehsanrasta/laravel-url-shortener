@@ -2,7 +2,7 @@
   import { Line } from 'vue-chartjs'
 
   export default {
-    name: 'LinkChartComponent',
+    name: 'LinkChart',
 
     props: ['chartData', 'chartLabels'],
 

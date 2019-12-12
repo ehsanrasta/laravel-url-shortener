@@ -45,24 +45,24 @@ Vue.filter('momentDayYear', function (text) {
 import NavigationBar from './components/layout/NavigationBar.vue'
 
 // Dashboard components
-import DashboardComponent from './components/dashboard/DashboardComponent.vue'
+import Dashboard from './components/dashboard/Dashboard.vue'
 import StatCounter from './components/dashboard/StatCounter.vue'
 
 // Landing page components
-import ShortenLinkFormComponent from './components/landing/ShortenLinkFormComponent.vue'
+import ShortenLinkForm from './components/landing/ShortenLinkForm.vue'
 
 // Login page components
 import LoginForm from './components/auth/LoginForm.vue'
 
 // Register page components
-import RegisterForm from './components/auth/RegisterForm'
+import RegisterForm from './components/auth/RegisterForm.vue'
 
 const app = new Vue({
     components: {
         NavigationBar,
-        DashboardComponent,
+        Dashboard,
         StatCounter,
-        ShortenLinkFormComponent,
+        ShortenLinkForm,
         LoginForm,
         RegisterForm,
     },

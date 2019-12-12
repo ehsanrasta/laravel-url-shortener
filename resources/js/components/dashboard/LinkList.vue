@@ -26,7 +26,7 @@
 
 <script>
   export default {
-    name: 'LinksListComponent',
+    name: 'LinkList',
 
     props: ['links'],
 
