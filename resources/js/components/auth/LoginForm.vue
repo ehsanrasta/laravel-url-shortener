@@ -25,7 +25,6 @@
                 <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Sign in
                 </button>
-                <a href="password/reset" class="inline-block align-baseline font-bold text-sm text-purple-500 hover:text-purple-600">Forgot password?</a>
             </div>
         </form>
 
