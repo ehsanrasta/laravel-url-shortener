@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white shadow p-2 sm:flex sm:justify-between items-baseline align-baseline">
+    <nav class="bg-white shadow py-4 px-4 sm:flex sm:justify-between items-baseline">
         <div class="flex justify-between">
             <a :href="'/'" class="text-purple-700 font-semibold subpixel-antialiased text-xl">Short.test</a>
             <div class="sm:hidden">
@@ -12,13 +12,13 @@
                 </button>
             </div>
         </div>
-        <div :class="isOpen ? 'inline-block' : 'hidden'" class="pt-2 pb-4 sm:flex items-baseline">
-            <a v-if="!this.user" :href="'/login'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
+        <div :class="isOpen ? 'inline-block' : 'hidden'" class="sm:flex">
+            <a v-if="!this.user" :href="'/login'" class="block hover:text-purple-700 sm:py-0 sm:ml-5">Login</a>
             <a v-if="!this.user" :href="'/register'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Register</a>
             <a v-if="this.user" :href="'/home'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Home</a>
             <a v-if="this.user" :href="'/logout'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Logout</a>
         </div>
-    </header>
+    </nav>
 </template>
 
 <script>
