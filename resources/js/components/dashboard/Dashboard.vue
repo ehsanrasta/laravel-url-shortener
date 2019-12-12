@@ -25,7 +25,7 @@
             <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
-        <div class="container overflow-x-auto mt-10 shadow rounded bg-white">
+        <div class="container overflow-auto max-h-screen mt-10 shadow rounded bg-white">
             <link-list v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list>
             <div v-if="links.length === 0" class="text-center justify-center p-24">
                 <p class="font-semibold text-gray-600">
