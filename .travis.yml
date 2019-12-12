@@ -1,0 +1,18 @@
+language: php
+
+php:
+  - 7.3
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan migrate
+  - npm install
+  - npm run prod
+
+before_install:
+  - mysql -e 'CREATE DATABASE laravel-url-shortener-testing;'
+
+script:
+  - vendor/bin/phpunit
