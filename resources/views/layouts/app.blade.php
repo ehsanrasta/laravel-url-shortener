@@ -31,7 +31,7 @@
     </main>
 
     <div class="flex flex-row mt-20 mb-10 text-gray-600 justify-center">
-        <p>EACDEV &copy; 2019</p>
+        <p>Test &copy; 2019</p>
     </div>
 </div>
 </body>
