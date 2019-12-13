@@ -10,10 +10,10 @@ before_script:
 - npm install
 - npm run prod
 before_install:
-- openssl aes-256-cbc -K $encrypted_3c96886c4e51_key -iv $encrypted_3c96886c4e51_iv -in deploy_key.pub.enc -out deploy_key.pub -d
-- chmod 600 deploy_key.pub
+- openssl aes-256-cbc -K $encrypted_3c96886c4e51_key -iv $encrypted_3c96886c4e51_iv -in deploy_key_pub.enc -out deploy_key_pub -d
+- chmod 600 deploy_key_pub
 - eval "$(ssh-agent -s)"
-- ssh-add deploy_key.pub
+- ssh-add deploy_key_pub
 - mysql -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
 services:
 - mysql
@@ -21,5 +21,5 @@ script:
 - vendor/bin/phpunit
 after_success:
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add deploy_key.pub
-- ssh -i deploy_key.pub root@138.197.164.139 pwd
+- ssh-add deploy_key_pub
+- ssh -i deploy_key_pub root@138.197.164.139 pwd
