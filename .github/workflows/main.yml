@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction
       - name: Create test database
-        run: mysql -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
+        run: mysql -u root -p -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
       - name: Generate application key
         run: php artisan key:generate
       - name: Run DB migrations
