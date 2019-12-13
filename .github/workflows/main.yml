@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  laravel_tests:
+  tests:
     runs-on: [ubuntu-latest]
 
     steps:
@@ -28,6 +28,7 @@ jobs:
         run: vendor/bin/phpunit
 
   deploy:
+    needs: tests
     runs-on: [ubuntu-latest]
 
     steps:
@@ -35,5 +36,5 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.KEY }}
+          key: ${{ secrets.DEPLOY_KEY }}
           script: pwd
