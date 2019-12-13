@@ -13,6 +13,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_3c96886c4e51_key -iv $encrypted_3c96886c4e51_iv -in deploy_key_pub.enc -out deploy_key_pub -d
 - chmod 600 deploy_key_pub
 - eval "$(ssh-agent -s)"
+- cat deploy_key_pub
 - ssh-add deploy_key_pub
 - mysql -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
 services:
