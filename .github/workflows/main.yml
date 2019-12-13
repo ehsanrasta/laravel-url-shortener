@@ -1,0 +1,28 @@
+name: CI
+
+on: [push]
+
+jobs:
+  laravel_tests:
+    runs-on: [ubuntu-latest]
+    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Copy env config for CI
+        run: cp .env.ci .env
+      - name: Update composer
+        run: composer self-update
+      - name: Install dependencies
+        run: composer install --no-interaction
+      - name: Generate application key
+        run: php artisan key:generate
+      - name: Run DB migrations
+        run: php artisan migrate
+      - name: Install dependenciens
+        run: npm install
+      - name: Compile assets
+        run: npm run prod
+      - name: Run testts
+        run: vendor/bin/phpunit
+      
+         
