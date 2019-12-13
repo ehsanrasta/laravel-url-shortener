@@ -39,8 +39,6 @@ return [
     |
     */
 
-    // Trigger travis
-
     'debug' => env('APP_DEBUG', false),
 
     /*
