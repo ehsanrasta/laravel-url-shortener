@@ -31,10 +31,9 @@ jobs:
     runs-on: [ubuntu-latest]
 
     steps:
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        key: ${{ secrets.DEPLOY_KEY }}
-        script: pwd
-
-
+      - name: deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.KEY }}
+          script: pwd
