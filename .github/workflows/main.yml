@@ -14,7 +14,7 @@ jobs:
         run: composer self-update
       - name: Install dependencies
         run: composer install --no-interaction
-      -name: Create test database
+      - name: Create test database
         run: mysql -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
       - name: Generate application key
         run: php artisan key:generate
