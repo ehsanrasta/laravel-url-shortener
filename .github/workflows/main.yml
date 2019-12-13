@@ -3,34 +3,32 @@ name: CI
 on: [push]
 
 jobs:
-#  tests:
-#    runs-on: [ubuntu-latest]
-#
-#    steps:
-#      - uses: actions/checkout@v1
-#      - name: Copy env config for CI
-#        run: cp .env.ci .env
-#      - name: Update composer
-#        run: composer self-update
-#      - name: Install dependencies
-#        run: composer install --no-interaction
-#      - name: Create test database
-#        run: mysql -u root -proot -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
-#      - name: Generate application key
-#        run: php artisan key:generate
-#      - name: Run DB migrations
-#        run: php artisan migrate
-#      - name: Install dependenciens
-#        run: npm install
-#      - name: Compile assets
-#        run: npm run prod
-#      - name: Run testts
-#        run: vendor/bin/phpunit
+  tests:
+    runs-on: [ubuntu-latest]
 
-  #test
+    steps:
+      - uses: actions/checkout@v1
+      - name: Copy env config for CI
+        run: cp .env.ci .env
+      - name: Update composer
+        run: composer self-update
+      - name: Install dependencies
+        run: composer install --no-interaction
+      - name: Create test database
+        run: mysql -u root -proot -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
+      - name: Generate application key
+        run: php artisan key:generate
+      - name: Run DB migrations
+        run: php artisan migrate
+      - name: Install dependenciens
+        run: npm install
+      - name: Compile assets
+        run: npm run prod
+      - name: Run testts
+        run: vendor/bin/phpunit
 
   deploy:
-    #needs: tests
+    needs: tests
     runs-on: [ubuntu-latest]
 
     steps:
