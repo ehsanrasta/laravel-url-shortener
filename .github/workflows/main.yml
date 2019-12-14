@@ -40,6 +40,7 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            cd ${{ secrets.APP_DIRECTORY }}
             php artisan down
             git pull
             composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
