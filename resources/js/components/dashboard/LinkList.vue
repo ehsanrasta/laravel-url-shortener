@@ -1,27 +1,20 @@
 <template>
-    <table class="w-full whitespace-no-wrap">
-        <thead>
-        <tr class="uppercase text-gray-600 text-sm">
-            <th class="text-left py-3 px-8">Original</th>
-            <th class="text-left py-3 px-1">Short</th>
-            <th class="text-right py-3 px-1">Clicks</th>
-            <th class="text-right py-3 px-1">Created at</th>
-            <th class="text-center py-3 px-1">View / Copy</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(link, index) in links" class="text-gray-600" :class="{ 'text-purple-700 font-semibold' : isSelected(index) }">
-            <td class="py-3 px-8">{{ link.original | truncate(40) }}</td>
-            <td class="py-3 px-1">{{ APP_URL }}/{{ link.short }}</td>
-            <td class="text-right py-3 px-1">{{ link.totalClicks }}</td>
-            <td class="text-right py-3 px-1">{{ link.created_at | momentDay }}</td>
-            <td class="text-center py-3 px-1">
-                <i class="far fa-eye inline cursor-pointer" @click="setSelected(index)"></i>
-                <i class="far fa-file inline ml-5 cursor-pointer"></i>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <div v-for="(link, index) in links"
+             class="group flex flex-row rounded mt-5 bg-white p-8 shadow w-full md:w-2/3 mx-auto items-center cursor-pointer pointer select-none"
+             :class="{ 'selected' : isSelected(index) }"
+             @click="setSelected(index)">
+
+            <div class="flex flex-col items-center bg-purple-100 text-purple-500 p-3 rounded">
+                <i class="fas fa-eye text-xl"></i>
+                <p class="mt-1">{{ link.totalClicks }}</p>
+            </div>
+            <div class="flex flex-col ml-8">
+                <a :href="'/' + link.short" class="text-purple-600 font-semibold hover:underline">{{ APP_URL }}/{{ link.short }}</a>
+                <a :href="link.original" class="text-purple-500 mt-1 hover:underline">{{ link.original | truncate(30) }}</a>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -44,7 +37,7 @@
       },
       isSelected (index) {
         return index === this.selectedIndex
-      }
+      },
     },
 
     mounted () {
@@ -54,5 +47,11 @@
 </script>
 
 <style scoped>
+    .selected {
+        @apply bg-purple-600;
+    }
 
+    .selected a {
+        @apply text-white;
+    }
 </style>
