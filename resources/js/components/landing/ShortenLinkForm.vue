@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex mx-auto justify-between w-2/3 focus:outline-none border border-transparent focus-within:border-purple-500 rounded-full
+        <div class="flex mx-auto justify-between sm:w-full md:w-2/3 focus:outline-none border border-transparent focus-within:border-purple-500 rounded-full
                         shadow-md focus-within:shadow-lg">
             <input v-model="original" type="text" class="p-3 pl-5 w-10/12 z-10 text-purple-600 outline-none rounded-l-full"
                    v-on:keyup.enter="shorten()"
