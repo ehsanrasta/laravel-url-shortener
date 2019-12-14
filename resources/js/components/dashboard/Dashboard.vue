@@ -8,7 +8,7 @@
                 :value="this.selectedLink.totalClicks"
                 :description="'Total Followers'"></stat-counter>
             <stat-counter
-                :icon="'fa-bullseye'"
+                :icon="'fa-eye'"
                 :fg-color="'text-purple-500'"
                 :bg-color="'bg-purple-100'"
                 :value="this.selectedLink.totalClicks"
@@ -25,13 +25,8 @@
             <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
-        <div class="container overflow-auto max-h-screen mt-10 shadow rounded bg-white">
+        <div class="mt-10">
             <link-list v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list>
-            <div v-if="links.length === 0" class="text-center justify-center p-24">
-                <p class="font-semibold text-gray-600">
-                    Hey! There's nothing here... <a href="/" class="text-blue-500 underline">start by adding some links.</a>
-                </p>
-            </div>
         </div>
     </div>
 </template>
@@ -50,6 +45,8 @@
 
     data () {
       return {
+        APP_URL: process.env.MIX_APP_URL,
+
         selectedLink: {},
 
         chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
