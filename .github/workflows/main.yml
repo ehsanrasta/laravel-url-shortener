@@ -50,7 +50,6 @@ jobs:
             php artisan route:clear
             php artisan route:cache
             php artisan config:clear
-            php artisan config:cache
             npm install
             npm run prod
             php artisan up
