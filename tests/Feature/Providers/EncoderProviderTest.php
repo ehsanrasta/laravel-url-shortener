@@ -30,4 +30,20 @@ class EncoderProviderTest extends TestCase
 
         $this->assertEquals(app()->encoder->decode($encodedId)[0], $link->id);
     }
+
+    /**
+     * Test that a link's short link has the same length as the config value.
+     *
+     * @return void
+     */
+    public function test_a_encoded_link_has_proper_length()
+    {
+        $link = factory(Link::class)->create();
+
+        $encodedId = app()->encoder->encode($link->id);
+
+        $expectedLength = env('HASHIDS_MIN_LENGTH');
+
+        $this->assertEquals($expectedLength, strlen($encodedId));
+    }
 }
