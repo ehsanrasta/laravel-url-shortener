@@ -3,6 +3,7 @@
         <div class="flex mx-auto justify-between sm:w-full md:w-2/3 focus:outline-none border border-transparent focus-within:border-purple-500 rounded-full
                         shadow-md focus-within:shadow-lg">
             <input v-model="original" type="text" class="p-3 pl-5 w-10/12 z-10 text-purple-600 outline-none rounded-l-full"
+                   autocorrect="off" autocapitalize="none"
                    v-on:keyup.enter="shorten()"
                    placeholder="Paste URL">
             <button
@@ -14,6 +15,13 @@
         </div>
 
         <previous-links-list :previous-links="previousLinks" v-if="previousLinks.length > 0"></previous-links-list>
+
+        <div v-if="previousLinks.length === 0" class="rounded text-gray-600 mt-10 bg-white p-8 shadow w-full md:w-2/3 mx-auto">
+            <p class="font-semibold">Hey!</p>
+            <p class="mt-2">This feels empty...</p>
+            <p>Start by adding some links 👆</p>
+            <p>Then view your dashboard for some <span>📈</span></p>
+        </div>
     </div>
 </template>
 
