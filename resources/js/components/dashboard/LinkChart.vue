@@ -1,12 +1,12 @@
 <script>
-  import { Line } from 'vue-chartjs'
+  import { Bar } from 'vue-chartjs'
 
   export default {
     name: 'LinkChart',
 
     props: ['chartData', 'chartLabels'],
 
-    extends: Line,
+    extends: Bar,
 
     mounted () {
       this.renderAreaChart()
@@ -19,7 +19,7 @@
           datasets:
             [{
               data: this.chartData,
-              backgroundColor: 'rgba(0, 0, 0, 0)',
+              backgroundColor: 'rgba(107, 70, 193, 1)',
               borderColor: 'rgba(107, 70, 193, 1)',
             }]
         }
@@ -27,8 +27,19 @@
         let options = {
           scales: {
             yAxes: [{
+              display: false,
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+              },
+              gridLines: {
+                display: false,
+              }
+            }],
+
+            xAxes: [{
+              display: false,
+              gridLines: {
+                display: false,
               }
             }]
           },
