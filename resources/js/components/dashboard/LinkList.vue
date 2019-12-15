@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(link, index) in links"
-             class="group flex flex-row rounded mt-5 bg-white p-8 shadow w-full md:w-2/3 mx-auto items-center cursor-pointer pointer select-none"
+             class="group flex flex-row rounded mt-5 bg-white p-6 shadow w-full md:w-2/3 mx-auto items-center cursor-pointer pointer select-none"
              :class="{ 'selected' : isSelected(index) }"
              @click="setSelected(index)">
 
@@ -9,7 +9,7 @@
                 <i class="fas fa-eye text-xl"></i>
                 <p class="mt-1">{{ link.totalClicks }}</p>
             </div>
-            <div class="flex flex-col ml-8">
+            <div class="flex flex-col ml-6 sm:ml-8">
                 <a :href="'/' + link.short" class="text-purple-600 font-semibold hover:underline">{{ APP_URL }}/{{ link.short }}</a>
                 <a :href="link.original" class="text-purple-500 mt-1 hover:underline">{{ link.original | truncate(30) }}</a>
             </div>
