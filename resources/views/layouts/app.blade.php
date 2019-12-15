@@ -26,7 +26,7 @@
         <navigation-bar :user="{{ auth()->user()->toJson() }}"></navigation-bar>
     @endguest
 
-    <main role="main" class="container mt-10 px-3 mx-auto">
+    <main role="main" class="container mt-10 mx-auto">
         @yield('content')
     </main>
 
