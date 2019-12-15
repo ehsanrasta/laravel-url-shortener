@@ -1,23 +1,12 @@
 <template>
     <div>
-        <div
-            v-if="links.length > 0"
-            class="container mx-auto flex flex-col px-5 sm:p-0 sm:flex-row sm:justify-between cursor-default">
-            <stat-counter
-                :icon="'fa-eye'"
-                :fg-color="'text-purple-500'"
-                :bg-color="'bg-purple-100'"
-                :value="this.selectedLink.totalClicks"
-                :description="'Clicks for the selected link'"></stat-counter>
-        </div>
-
         <div v-if="links.length > 0"
-             class="container mx-auto shadow bg-white rounded px-10 sm:p-0">
+             class="container mx-auto shadow bg-white rounded sm:p-0">
             <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
         <div v-if="links.length > 0"
-             class="mt-10 px-5 sm:p-0">
+             class="mt-10">
             <link-list :links="links" v-model="selectedLink"></link-list>
         </div>
 
