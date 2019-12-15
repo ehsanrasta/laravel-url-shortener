@@ -16,7 +16,7 @@
 
         <previous-links-list :previous-links="previousLinks" v-if="previousLinks.length > 0"></previous-links-list>
 
-        <div v-if="previousLinks.length === 0" class="rounded text-gray-600 mt-10 bg-white p-8 shadow w-full md:w-2/3 mx-auto">
+        <div v-if="previousLinks.length === 0" class="rounded text-gray-600 mt-10 bg-white p-6 shadow w-full md:w-2/3 mx-auto">
             <p class="font-semibold">Hey!</p>
             <p class="mt-2">This feels empty...</p>
             <p>Start by adding some links 👆</p>
