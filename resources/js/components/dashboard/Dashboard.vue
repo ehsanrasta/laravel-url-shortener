@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container mx-auto flex md:flex-row sm:justify-between flex-wrap cursor-default">
+        <div class="container mx-auto flex flex-col px-10 sm:p-0 sm:flex-row sm:justify-between cursor-default">
             <stat-counter
                 :icon="'fa-users'"
                 :fg-color="'text-blue-500'"
@@ -21,11 +21,11 @@
                 :description="'Total Reach'"></stat-counter>
         </div>
 
-        <div class="container mx-auto shadow bg-white rounded p-5">
+        <div class="container mx-auto shadow bg-white rounded px-10 sm:p-0">
             <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
-        <div class="mt-10">
+        <div class="mt-10 px-10 sm:p-0">
             <link-list v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list>
         </div>
     </div>
