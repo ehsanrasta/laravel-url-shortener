@@ -1,6 +1,6 @@
 <template>
     <!-- todo: The width classes in this component make it less reusable, they should be extracted -->
-    <div class="flex grow items-center flex-col w-full sm:w-40 md:w-48 lg:w-64 hover:shadow-lg bg-white rounded shadow pt-5 pb-10 mb-10">
+    <div class="flex items-center flex-col w-full md:w-48 lg:w-64 hover:shadow-lg bg-white rounded shadow pt-5 pb-10 mb-10">
         <i :class="[icon, fgColor, bgColor]" class="fas text-2xl mb-2 p-4 rounded-full"></i>
         <h4 class="font-bold text-5xl">{{ value }}</h4>
         <p class="text-gray-600">{{ description }}</p>
