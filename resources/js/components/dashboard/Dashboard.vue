@@ -1,32 +1,31 @@
 <template>
     <div>
-        <div class="container mx-auto flex flex-col px-10 sm:p-0 sm:flex-row sm:justify-between cursor-default">
-            <stat-counter
-                :icon="'fa-users'"
-                :fg-color="'text-blue-500'"
-                :bg-color="'bg-blue-100'"
-                :value="this.selectedLink.totalClicks"
-                :description="'Total Followers'"></stat-counter>
+        <div
+            v-if="links.length > 0"
+            class="container mx-auto flex flex-col px-5 sm:p-0 sm:flex-row sm:justify-between cursor-default">
             <stat-counter
                 :icon="'fa-eye'"
                 :fg-color="'text-purple-500'"
                 :bg-color="'bg-purple-100'"
                 :value="this.selectedLink.totalClicks"
-                :description="'Total Clicks'"></stat-counter>
-            <stat-counter
-                :icon="'fa-heart'"
-                :fg-color="'text-green-500'"
-                :bg-color="'bg-green-100'"
-                :value="this.selectedLink.totalClicks"
-                :description="'Total Reach'"></stat-counter>
+                :description="'Clicks for the selected link'"></stat-counter>
         </div>
 
-        <div class="container mx-auto shadow bg-white rounded px-10 sm:p-0">
+        <div v-if="links.length > 0"
+             class="container mx-auto shadow bg-white rounded px-10 sm:p-0">
             <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
         </div>
 
-        <div class="mt-10 px-10 sm:p-0">
-            <link-list v-if="links.length > 0" :links="links" v-model="selectedLink"></link-list>
+        <div v-if="links.length > 0"
+             class="mt-10 px-5 sm:p-0">
+            <link-list :links="links" v-model="selectedLink"></link-list>
+        </div>
+
+        <div v-if="links.length === 0"
+             class="rounded text-gray-600 bg-white p-8 shadow w-full md:w-2/3 mx-auto">
+            <p class="font-semibold">Hey!</p>
+            <p class="mt-2">There's nothing here...</p>
+            <a href="/" class="text-blue-500 hover:underline">Start by adding some links ✨</a>
         </div>
     </div>
 </template>
