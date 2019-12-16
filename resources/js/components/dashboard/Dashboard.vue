@@ -1,8 +1,18 @@
 <template>
     <div>
         <div v-if="links.length > 0"
-             class="container mx-auto shadow bg-white rounded sm:p-0">
-            <link-chart :height="100" :chart-data="this.selectedLink.clicksByMonth" :chart-labels="chartLabels"></link-chart>
+             class="w-full md:w-2/3 p-2 mx-auto shadow bg-white rounded">
+            <link-chart v-if="selectedLink.totalClicks > 0"
+                        :height="150"
+                        :chart-data="this.selectedLink.clicksByMonth"
+                        :chart-labels="chartLabels"></link-chart>
+        </div>
+
+        <div v-if="selectedLink && selectedLink.totalClicks === 0"
+             class="rounded text-gray-600 bg-white p-6 shadow w-full md:w-2/3 mx-auto">
+            <p class="font-semibold">Hey!</p>
+            <p class="mt-2">This link doesn't have any clicks...</p>
+            <p>Once it gets a couple, we'll be able to show you a nice graph.</p>
         </div>
 
         <div v-if="links.length > 0"
@@ -37,7 +47,7 @@
 
         selectedLink: {},
 
-        chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
         links: [],
       }
