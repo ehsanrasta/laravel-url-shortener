@@ -1,7 +1,5 @@
 @extends('../layouts.app')
 
 @section('content')
-    <div class="p-3">
-        <shorten-link-form></shorten-link-form>
-    </div>
+    <shorten-link-page></shorten-link-page>
 @endsection

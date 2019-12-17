@@ -15,7 +15,6 @@ class Link extends Model
 
     protected $hidden = [
         'user_id',
-        'id',
         'updated_at',
         'clicks'
     ];

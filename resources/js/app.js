@@ -41,29 +41,18 @@ Vue.filter('momentDayYear', function (text) {
     return moment(text).format('MMMM Do YYYY')
 })
 
-// Layout components
-import NavigationBar from './components/layout/NavigationBar.vue'
-
-// Dashboard components
-import Dashboard from './components/dashboard/Dashboard.vue'
-import StatCounter from './components/dashboard/StatCounter.vue'
-
-// Landing page components
-import ShortenLinkForm from './components/landing/ShortenLinkForm.vue'
-
-// Login page components
-import LoginForm from './components/auth/LoginForm.vue'
-
-// Register page components
-import RegisterForm from './components/auth/RegisterForm.vue'
+Vue.component('navigation-bar', require('./components/layout/NavigationBar').default)
+Vue.component('shorten-link-page', require('./components/landing/ShortenLinkPage').default)
+Vue.component('links-list', require('./components/common/LinksList').default)
+Vue.component('previous-links-list-item', require('./components/landing/PreviousLinksListItem').default)
+Vue.component('links-list-item', require('./components/dashboard/LinksListItem').default)
+Vue.component('link-chart', require('./components/dashboard/LinkChart').default)
+Vue.component('dashboard', require('./components/dashboard/Dashboard').default)
+Vue.component('shorten-link-form', require('./components/landing/ShortenLinkForm').default)
+Vue.component('login-form', require('./components/auth/LoginForm').default)
+Vue.component('register-form', require('./components/auth/RegisterForm').default)
+Vue.component('notification', require('./components/common/Notification').default)
 
 const app = new Vue({
-    components: {
-        NavigationBar,
-        Dashboard,
-        StatCounter,
-        ShortenLinkForm,
-        LoginForm,
-        RegisterForm,
-    },
-}).$mount('#app')
+    el: '#app',
+})

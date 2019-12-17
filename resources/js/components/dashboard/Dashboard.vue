@@ -1,45 +1,46 @@
 <template>
     <div>
-        <div v-if="links.length > 0"
-             class="w-full md:w-2/3 p-2 mx-auto shadow bg-white rounded">
+        <div v-if="links.length > 0" class="w-full md:w-2/3 p-2 mx-auto shadow bg-white rounded">
             <link-chart v-if="selectedLink.totalClicks > 0"
                         :height="150"
                         :chart-data="this.selectedLink.clicksByMonth"
                         :chart-labels="chartLabels"></link-chart>
         </div>
 
-        <div v-if="selectedLink && selectedLink.totalClicks === 0"
-             class="rounded text-gray-600 bg-white p-6 shadow w-full md:w-2/3 mx-auto">
-            <p class="font-semibold">Hey!</p>
-            <p class="mt-2">This link doesn't have any clicks...</p>
-            <p>Once it gets a couple, we'll be able to show you a nice graph.</p>
+        <div v-if="selectedLink.totalClicks === 0" class="md:w-2/3 mx-auto">
+            <notification>
+                <template #title>Hey!</template>
+                <template #body>
+                    <p class="mt-2">This link doesn't have any clicks...</p>
+                    <p>Once it gets a couple, we'll be able to show you a nice graph.</p>
+                </template>
+            </notification>
         </div>
 
-        <div v-if="links.length > 0"
-             class="mt-10">
-            <link-list :links="links" v-model="selectedLink"></link-list>
-        </div>
+        <links-list :links="links" v-if="links.length > 0" class="mt-10 w-full md:w-2/3 mx-auto" v-model="selectedLink">
+            <template #list-title>Your links</template>
+            <template #list-item="{ link, selected }">
+                <links-list-item :link="link" :selected="selected"></links-list-item>
+            </template>
+        </links-list>
 
-        <div v-if="links.length === 0"
-             class="rounded text-gray-600 bg-white p-8 shadow w-full md:w-2/3 mx-auto">
-            <p class="font-semibold">Hey!</p>
-            <p class="mt-2">There's nothing here...</p>
-            <a href="/" class="text-blue-500 hover:underline">Start by adding some links ✨</a>
+        <div v-if="links.length === 0" class="md:w-2/3 mt-10 mx-auto">
+            <notification>
+                <template #title>Hey!</template>
+                <template #body>
+                    <p>There's nothing here...</p>
+                    <a href="/" class="text-blue-500 hover:underline">Start by adding some links ✨</a>
+                </template>
+            </notification>
         </div>
     </div>
 </template>
 
 <script>
-  import StatCounter from './StatCounter.vue'
-
   import LinksClient from '../../api/links'
-  import LinkChart from './LinkChart'
-  import LinkList from './LinkList'
 
   export default {
     name: 'Dashboard',
-
-    components: {LinkList, LinkChart, StatCounter},
 
     data () {
       return {
