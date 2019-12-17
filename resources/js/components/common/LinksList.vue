@@ -44,21 +44,4 @@
 </script>
 
 <style scoped>
-    .list-enter-active, .list-leave-active {
-        transition: all 1s;
-    }
-
-    .list-enter /* .list-leave-active below version 2.1.8 */
-    {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .list-leave-active {
-        display: none;
-    }
-
-    .list-move {
-        transition: transform 1s;
-    }
 </style>
