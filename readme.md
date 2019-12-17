@@ -80,6 +80,13 @@ public function register()
 
 [Link.php](https://github.com/eacdev/laravel-url-shortener/blob/master/app/Link.php#L28)
 ```php
+public function getShortAttribute()
+{
+    return app()->encoder->encode($this->id);
+}
+
+...
+
 public function resolveRouteBinding($value)
 {
     // Check if it's a hashid encoded short link
@@ -87,12 +94,13 @@ public function resolveRouteBinding($value)
         $decodedId = app()->encoder->decode($value)[0];
         return $this->where('id', $decodedId)->first();
     }
+
     abort(404);
 }
 ```
 
 ## Contributing
-Pull requests are welcome. Please open an issue first to discuss.
+Pull requests are welcome. Please open an issue to discuss.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
