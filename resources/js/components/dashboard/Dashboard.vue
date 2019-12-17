@@ -1,38 +1,40 @@
 <template>
     <div>
-        <div v-if="links.length > 0" class="w-full md:w-2/3 p-2 mx-auto shadow bg-white rounded">
-            <link-chart v-if="selectedLink.totalClicks > 0"
-                        :height="150"
-                        :chart-data="this.selectedLink.clicksByMonth"
-                        :chart-labels="chartLabels"></link-chart>
-        </div>
-
-        <div v-if="selectedLink.totalClicks === 0" class="md:w-2/3 mx-auto">
-            <notification>
+        <transition appear name="fade" mode="out-in">
+            <notification v-if="selectedLink.totalClicks === 0" class="md:w-2/3 mx-auto">
                 <template #title>Hey!</template>
                 <template #body>
                     <p class="mt-2">This link doesn't have any clicks...</p>
                     <p>Once it gets a couple, we'll be able to show you a nice graph.</p>
                 </template>
             </notification>
-        </div>
 
-        <links-list :links="links" v-if="links.length > 0" class="mt-10 w-full md:w-2/3 mx-auto" v-model="selectedLink">
-            <template #list-title>Your links</template>
-            <template #list-item="{ link, selected }">
-                <links-list-item :link="link" :selected="selected"></links-list-item>
-            </template>
-        </links-list>
+            <link-chart v-if="selectedLink.totalClicks > 0"
+                        :class="'w-full md:w-2/3 p-2 mx-auto shadow bg-white rounded'"
+                        :height="150"
+                        :chart-data="this.selectedLink.clicksByMonth"
+                        :chart-labels="chartLabels"
+                        ></link-chart>
+        </transition>
 
-        <div v-if="links.length === 0" class="md:w-2/3 mt-10 mx-auto">
-            <notification>
+        <transition appear name="fade">
+            <notification v-if="links.length === 0 && !isLoading" class="md:w-2/3 mt-10 mx-auto">
                 <template #title>Hey!</template>
                 <template #body>
                     <p>There's nothing here...</p>
                     <a href="/" class="text-blue-500 hover:underline">Start by adding some links ✨</a>
                 </template>
             </notification>
-        </div>
+        </transition>
+
+        <transition appear name="fade">
+            <links-list :links="links" v-if="links.length > 0" class="mt-10 w-full md:w-2/3 mx-auto" v-model="selectedLink">
+                <template #list-title>Your links</template>
+                <template #list-item="{ link, selected }">
+                    <links-list-item :link="link" :selected="selected"></links-list-item>
+                </template>
+            </links-list>
+        </transition>
     </div>
 </template>
 
@@ -51,6 +53,8 @@
         chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
         links: [],
+
+        isLoading: true,
       }
     },
 
@@ -68,11 +72,20 @@
           title: 'Oops...',
           text: 'There was an error loading your past links.',
         })
+      } finally {
+        this.isLoading = false
       }
     },
   }
 </script>
 
 <style scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
 
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
+    }
 </style>

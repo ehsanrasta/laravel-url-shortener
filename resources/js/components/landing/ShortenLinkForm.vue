@@ -1,14 +1,19 @@
 <template>
-    <div>
+    <div class="flex mx-auto justify-between focus:outline-none border border-transparent focus-within:border-purple-500 rounded-full">
         <input v-model="original" type="text" class="p-3 pl-5 w-10/12 z-10 text-purple-600 outline-none rounded-l-full"
+               required
                autocorrect="off" autocapitalize="none"
-               v-on:keyup.enter="shorten()"
-               placeholder="Paste URL">
+               @keyup.enter="shorten()"
+               placeholder="Enter URL">
         <button
-            @click="shorten()"
-            type="button"
+            @submit.prevent=""
+            @click.prevent="shorten()"
+            type="submit"
             class="w-6/12 bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 z-0 -ml-5 rounded-full focus:outline-none">
-            <span class="ml-5 text-lg">Shorten</span>
+            <span v-if="! loading" class="ml-5 text-lg">Shorten</span>
+            <span>
+                <clip-loader :loading="loading" :color="'#5dc596'" :size="'21px'" class="ml-6"></clip-loader>
+            </span>
         </button>
     </div>
 </template>
@@ -21,12 +26,15 @@
 
     data () {
       return {
+        loading: false,
         original: '',
       }
     },
 
     methods: {
       async shorten () {
+        this.loading = true
+
         const link = {
           original: this.addProtocolToLink(this.original)
         }
@@ -41,6 +49,8 @@
             title: 'Oops...',
             text: 'Please check your link and try again.',
           })
+        } finally {
+          this.loading = false
         }
       },
 

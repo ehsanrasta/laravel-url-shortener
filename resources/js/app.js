@@ -53,6 +53,8 @@ Vue.component('login-form', require('./components/auth/LoginForm').default)
 Vue.component('register-form', require('./components/auth/RegisterForm').default)
 Vue.component('notification', require('./components/common/Notification').default)
 
+Vue.component('clip-loader', require('vue-spinner/src/ClipLoader').default);
+
 const app = new Vue({
     el: '#app',
 })

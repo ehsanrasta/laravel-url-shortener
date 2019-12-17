@@ -3,11 +3,11 @@
         <p class="uppercase font-semibold text-gray-600">
             <slot name="list-title"></slot>
         </p>
-        <ul>
+        <transition-group name="list" tag="ul">
             <li v-for="link in links" :key="link.id" @click="select(link.id)">
                 <slot name="list-item" :link="link" :selected="isSelected(link.id)"></slot>
             </li>
-        </ul>
+        </transition-group>
     </div>
 </template>
 
@@ -44,4 +44,21 @@
 </script>
 
 <style scoped>
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+
+    .list-enter /* .list-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .list-leave-active {
+        display: none;
+    }
+
+    .list-move {
+        transition: transform 1s;
+    }
 </style>
