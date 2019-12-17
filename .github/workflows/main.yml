@@ -21,7 +21,7 @@ jobs:
       - name: Run DB migrations
         run: php artisan migrate
       - name: Install dependenciens
-        run: npm install
+        run: npm ci
       - name: Compile assets
         run: npm run prod
       - name: Run testts
@@ -49,6 +49,6 @@ jobs:
             php artisan auth:clear-resets
             php artisan route:clear
             php artisan config:clear
-            npm install
+            npm ci
             npm run prod
             php artisan up
