@@ -47,8 +47,8 @@
           this.$swal({
             type: 'error',
             title: 'Oops...',
-            text: 'Please check your link and try again.',
-            confirmButtonColor: '#805ad5'
+            text: 'Something went wrong!',
+            confirmButtonColor: '#805ad5',
           })
         } finally {
           this.isLoading = false
