@@ -29,10 +29,6 @@
     <main role="main" class="container mt-10 mx-auto">
         @yield('content')
     </main>
-
-    <div class="flex flex-row mt-20 mb-10 text-gray-600 justify-center">
-        <a href="http://github.com/eacdev/laravel-url-shortener">View the code on <i class="fab fa-github"></i></a>
-    </div>
 </div>
 </body>
 </html>

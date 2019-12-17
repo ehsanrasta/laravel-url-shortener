@@ -23,6 +23,10 @@
                 </notification>
             </div>
         </transition>
+
+        <div class="flex flex-row text-gray-600 justify-center mt-12">
+            <a href="http://github.com/eacdev/laravel-url-shortener">View the code on <i class="fab fa-github"></i></a>
+        </div>
     </div>
 </template>
 

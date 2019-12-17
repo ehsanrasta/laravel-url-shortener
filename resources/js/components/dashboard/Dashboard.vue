@@ -1,5 +1,7 @@
 <template>
     <div>
+        <clip-loader :loading="isLoading" :color="'#805ad5'" :size="'21px'" class="mx-auto self-center"></clip-loader>
+
         <transition appear name="fade" mode="out-in">
             <notification v-if="selectedLink.totalClicks === 0" class="md:w-2/3 mx-auto">
                 <template #title>Hey!</template>

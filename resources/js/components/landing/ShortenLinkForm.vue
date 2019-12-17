@@ -10,9 +10,9 @@
             @click.prevent="shorten()"
             type="submit"
             class="w-6/12 bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 z-0 -ml-5 rounded-full focus:outline-none">
-            <span v-if="! loading" class="ml-5 text-lg">Shorten</span>
+            <span v-if="! isLoading" class="ml-5 text-lg">Shorten</span>
             <span>
-                <clip-loader :loading="loading" :color="'#5dc596'" :size="'21px'" class="ml-6"></clip-loader>
+                <clip-loader :loading="isLoading" :color="'#5dc596'" :size="'21px'" class="ml-6"></clip-loader>
             </span>
         </button>
     </div>
@@ -26,14 +26,14 @@
 
     data () {
       return {
-        loading: false,
+        isLoading: false,
         original: '',
       }
     },
 
     methods: {
       async shorten () {
-        this.loading = true
+        this.isLoading = true
 
         const link = {
           original: this.addProtocolToLink(this.original)
@@ -50,7 +50,7 @@
             text: 'Please check your link and try again.',
           })
         } finally {
-          this.loading = false
+          this.isLoading = false
         }
       },
 
