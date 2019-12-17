@@ -13,10 +13,10 @@
             </div>
         </div>
         <div :class="isOpen ? 'inline-block' : 'hidden'" class="sm:flex mt-3 md:mt-0">
-            <a v-if="!this.user" :href="'/login'" class="block hover:text-purple-700 sm:py-3 sm:ml-5">Login</a>
-            <a v-if="!this.user" :href="'/register'" class="block hover:text-purple-700 sm:py-3 sm:ml-5">Register</a>
-            <a v-if="this.user" :href="'/home'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Home</a>
-            <a v-if="this.user" :href="'/logout'" class="block py-1 hover:text-purple-700 sm:py-0 sm:ml-5">Logout</a>
+            <a v-if="!this.user" :href="'/login'" class="block hover:text-purple-700 py-1 sm:py-0 sm:ml-5">Login</a>
+            <a v-if="!this.user" :href="'/register'" class="block hover:text-purple-700 py-1 sm:py-0 sm:ml-5">Register</a>
+            <a v-if="this.user" :href="'/home'" class="block hover:text-purple-700 py-1 sm:py-0 sm:ml-5">Home</a>
+            <a v-if="this.user" :href="'/logout'" class="block hover:text-purple-700 py-1 sm:py-0 sm:ml-5">Logout</a>
         </div>
     </nav>
 </template>
