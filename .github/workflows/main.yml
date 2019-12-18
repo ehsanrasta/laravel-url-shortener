@@ -13,7 +13,7 @@ jobs:
       - name: Update composer
         run: composer self-update
       - name: Install dependencies
-        run: composer install --no-interaction --optimize-autoloader --no-dev
+        run: composer install --no-interaction --optimize-autoloader
       - name: Create test database
         run: mysql -u root -proot -e 'CREATE DATABASE `laravel-url-shortener-testing`;'
       - name: Generate application key
