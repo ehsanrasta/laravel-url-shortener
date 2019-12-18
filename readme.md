@@ -4,8 +4,6 @@
 
 [Live Demo](http://138.197.164.139/)
 
-Email: demo@demo.com - Password: demo1234
-
 ## Introduction
 This is a URL shortener featuring a Laravel backend and a a Vue.js frontend.
 
