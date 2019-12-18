@@ -28,7 +28,7 @@ composer install
 
 3. Copy .env.example to .env
 ```bash
-mv .env.example .env
+cp .env.example .env
 ```
 
 4. Generate app key
