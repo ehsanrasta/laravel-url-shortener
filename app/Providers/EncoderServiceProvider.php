@@ -15,7 +15,7 @@ class EncoderServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('encoder', function ($app) {
-            return new Hashids(env('HASHIDS_SALT'), env('HASHIDS_MIN_LENGTH'));
+            return new Hashids(config('encoder.hashids_salt'), config('encoder.hashids_min_length'));
         });
     }
 
