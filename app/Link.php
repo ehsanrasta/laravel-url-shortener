@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     protected $fillable = [
-        'original',
+        'original','agent'
     ];
 
     protected $hidden = [
@@ -25,22 +25,13 @@ class Link extends Model
         'totalClicks',
     ];
 
-    public function resolveRouteBinding($value)
+    public function addClick($agent = null)
     {
-        // Check if it's a hashid encoded short link
-        if (count(app()->encoder->decode($value)) > 0) {
-            $decodedId = app()->encoder->decode($value)[0];
-            return $this->where('id', $decodedId)->first();
-        }
-
-        abort(404);
-    }
-
-    public function addClick($date)
-    {
+        $date = \Carbon::now();
         $this->clicks()->create([
             'link_id' => $this->id,
             'created_at' => $date,
+            'agent' => $agent
         ]);
 
         //TODO: Job queue instead, faster redirection
@@ -75,7 +66,7 @@ class Link extends Model
 
     public function getShortAttribute()
     {
-        return app()->encoder->encode($this->id);
+        return $this->slug;
     }
 
     public function user()
