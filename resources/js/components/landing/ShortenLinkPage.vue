@@ -11,17 +11,6 @@
                     <previous-links-list-item :link="link" :selected="selected"></previous-links-list-item>
                 </template>
             </links-list>
-
-            <div v-if="previousLinks.length === 0" class="md:w-2/3 mt-10 mx-auto">
-                <notification>
-                    <template #title>Hey!</template>
-                    <template #body>
-                        <p>This feels empty...</p>
-                        <p>Start by adding some links 👆</p>
-                        <p>Then view your dashboard for some <span>📈</span></p>
-                    </template>
-                </notification>
-            </div>
         </transition>
 
         <div class="flex flex-row text-gray-600 justify-center mt-12">
