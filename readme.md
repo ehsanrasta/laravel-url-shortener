@@ -66,7 +66,7 @@ npm run dev
 This project uses the [hashids](https://github.com/vinkla/hashids)
 library to generate unique strings from database ids.
 
-[EncoderServiceProvider.php](https://github.com/eacdev/laravel-url-shortener/blob/master/app/Providers/EncoderServiceProvider.php)
+[EncoderServiceProvider.php](https://github.com/ehsanrasta/laravel-url-shortener/blob/master/app/Providers/EncoderServiceProvider.php)
 ```php
 public function register()
 {
@@ -76,7 +76,7 @@ public function register()
 }
 ```
 
-[Link.php](https://github.com/eacdev/laravel-url-shortener/blob/master/app/Link.php#L28)
+[Link.php](https://github.com/ehsanrasta/laravel-url-shortener/blob/master/app/Link.php#L28)
 ```php
 public function getShortAttribute()
 {
