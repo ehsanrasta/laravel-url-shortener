@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Click extends Model
 {
-    protected $fillable = ['link_id', 'created_at'];
+    protected $fillable = ['link_id', 'created_at','agent'];
 
     protected $hidden = [
         'id',
