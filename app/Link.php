@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     protected $fillable = [
-        'original','agent'
+        'original','slug'
     ];
 
     protected $hidden = [
@@ -24,6 +24,16 @@ class Link extends Model
         'clicksByMonth',
         'totalClicks',
     ];
+    
+	public static function boot()
+	{
+		parent::boot();
+	
+		static::created(function ($model) {
+			$model->slug = app()->encoder->encode($model->id);
+			$model->save();
+		});
+	}
 
     public function addClick($agent = null)
     {
