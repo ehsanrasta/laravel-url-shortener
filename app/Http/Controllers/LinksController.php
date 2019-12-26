@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreShortLink;
 use App\Link;
 use Carbon\Carbon;
