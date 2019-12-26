@@ -14,6 +14,7 @@
 Route::get('/', 'LinksController@create');
 
 Auth::routes([
+    'register' => false,
     'reset' => false,
     'verify' => false,
 ]);
@@ -24,11 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/links/create', 'LinksController@create');
 
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api','middleware' => ['auth']], function () {
     Route::post('/shorten', 'LinksController@store');
-
     Route::get('/links', 'LinksController@index');
 });
 
-Route::get('/{link}', 'LinksController@show');
+Route::get('/{slug}', 'LinksController@show');
 
