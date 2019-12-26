@@ -16,6 +16,7 @@ class CreateClicksTable extends Migration
         Schema::create('clicks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('link_id');
+            $table->string('agent')->nullable();
             $table->timestamps();
         });
     }
