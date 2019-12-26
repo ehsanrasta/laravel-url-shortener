@@ -11,8 +11,8 @@ class LinksController extends Controller
 {
     public function index()
     {
-        $links = $this->getLinksForUserOrGuest();
-
+        $links = auth()->user()->links;
+        
         return response()->json($links);
     }
 
@@ -24,8 +24,8 @@ class LinksController extends Controller
     public function store(StoreShortLink $request)
     {
         $data = $request->validated();
-
-        $link = $this->createLinkForUserOrGuest($data);
+    
+        $link = auth()->user()->links()->create($data);
 
         return response()->json(new LinkResource($link));
     }
@@ -37,23 +37,5 @@ class LinksController extends Controller
         $link->addClick($agent);
 
         return redirect()->to($link->original);
-    }
-
-    private function getLinksForUserOrGuest()
-    {
-        if (auth()->guest()) {
-            return collect();
-        }
-
-        return auth()->user()->links;
-    }
-
-    private function createLinkForUserOrGuest($data)
-    {
-        if (auth()->guest()) {
-            return Link::create($data);
-        }
-
-        return auth()->user()->links()->create($data);
     }
 }
