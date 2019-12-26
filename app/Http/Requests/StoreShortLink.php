@@ -25,6 +25,7 @@ class StoreShortLink extends FormRequest
     {
         return [
             'original' => 'required|url',
+            'short' => 'nullable|min:1|unique:links'
         ];
     }
 }
