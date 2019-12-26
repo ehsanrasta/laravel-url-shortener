@@ -28,7 +28,7 @@ class Link extends Model
 	public static function boot()
 	{
 		parent::boot();
-	
+
 		static::created(function ($model) {
 			$model->slug = app()->encoder->encode($model->id);
 			$model->save();
@@ -37,7 +37,7 @@ class Link extends Model
 
     public function addClick($agent = null)
     {
-        $date = \Carbon::now();
+        $date = Carbon::now();
         $this->clicks()->create([
             'link_id' => $this->id,
             'created_at' => $date,
