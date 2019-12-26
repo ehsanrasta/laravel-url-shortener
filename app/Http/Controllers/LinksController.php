@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ShowShortLink;
 use App\Http\Requests\StoreShortLink;
 use App\Link;
 use Carbon\Carbon;
@@ -31,11 +30,11 @@ class LinksController extends Controller
         return response()->json(new LinkResource($link));
     }
 
-    public function show(ShowShortLink $request, Link $link)
+    public function show(Request $request, String $slug)
     {
-        $data = $request->validated();
-
-        $link->addClick(Carbon::now());
+        $link = Link::where('slug',$slug)->firstOrFail();
+        $agent = $request->header('User-Agent');
+        $link->addClick($agent);
 
         return redirect()->to($link->original);
     }
